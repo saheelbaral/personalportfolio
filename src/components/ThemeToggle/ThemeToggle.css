@@ -1,0 +1,149 @@
+.theme-toggle {
+    background: transparent;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    position: relative;
+    width: 60px;
+    height: 30px;
+    border-radius: 30px;
+    overflow: hidden;
+    transition: all 0.5s ease;
+    box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.theme-toggle.light {
+    background: #87CEEB;
+    /* Sky blue */
+}
+
+.theme-toggle.dark {
+    background: #1a1b26;
+    /* Night sky */
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.toggle-scene {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+/* Sun/Moon Base */
+.sun-moon {
+    position: absolute;
+    top: 3px;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    transition: all 0.5s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.theme-toggle.light .sun-moon {
+    left: 3px;
+    background: #FDB813;
+    /* Sun yellow */
+    box-shadow: 0 0 10px #FDB813;
+}
+
+.theme-toggle.dark .sun-moon {
+    left: 33px;
+    background: #F4F6F0;
+    /* Moon white */
+    box-shadow: 0 0 8px rgba(255, 255, 255, 0.5);
+}
+
+/* Moon Craters */
+.crater {
+    position: absolute;
+    background: #E6E8D2;
+    border-radius: 50%;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.theme-toggle.dark .crater {
+    opacity: 1;
+}
+
+.crater:nth-child(1) {
+    top: 6px;
+    left: 5px;
+    width: 6px;
+    height: 6px;
+}
+
+.crater:nth-child(2) {
+    top: 12px;
+    left: 14px;
+    width: 4px;
+    height: 4px;
+}
+
+/* Stars */
+.stars {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.theme-toggle.dark .stars {
+    opacity: 1;
+}
+
+.star {
+    position: absolute;
+    background: #FFF;
+    border-radius: 50%;
+    animation: twinkle 2s infinite;
+}
+
+.star:nth-child(1) {
+    top: 8px;
+    left: 10px;
+    width: 2px;
+    height: 2px;
+}
+
+.star:nth-child(2) {
+    top: 18px;
+    left: 20px;
+    width: 1px;
+    height: 1px;
+    animation-delay: 1s;
+}
+
+.star:nth-child(3) {
+    top: 5px;
+    left: 25px;
+    width: 2px;
+    height: 2px;
+    animation-delay: 0.5s;
+}
+
+@keyframes twinkle {
+
+    0%,
+    100% {
+        opacity: 0.5;
+    }
+
+    50% {
+        opacity: 1;
+    }
+}
+
+/* Clouds (Optional for light mode) */
+.clouds {
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.theme-toggle.light .clouds {
+    opacity: 1;
+}

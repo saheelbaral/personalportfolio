@@ -1,0 +1,60 @@
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 2rem 4rem;
+  /* More generous padding */
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 10;
+  box-sizing: border-box;
+}
+
+.navbar-left {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  background: rgba(255, 255, 255, 0.03);
+  /* Subtle backdrop for the menu bar area if desired, or transparent */
+  padding: 0.8rem 1.5rem;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(5px);
+}
+
+.navbar-logo {
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  font-size: 0.9rem;
+  color: #fff;
+}
+
+.navbar-divider {
+  color: rgba(255, 255, 255, 0.3);
+  font-weight: 300;
+}
+
+.navbar-cta-text {
+  background: transparent;
+  border: none;
+  color: #fff;
+  padding: 0;
+  font-size: 0.9rem;
+  font-weight: 500;
+  cursor: pointer;
+  letter-spacing: 0.05em;
+  opacity: 0.8;
+  transition: opacity 0.3s;
+}
+
+.navbar-cta-text:hover {
+  opacity: 1;
+  text-decoration: underline;
+  /* Or some other subtle hover effect */
+  background: transparent;
+  /* Override default button hover */
+}
+
+/* Remove old CTA styles if no longer needed or keep if reused elsewhere */
