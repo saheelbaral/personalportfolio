@@ -20,12 +20,14 @@ const Hero = () => {
         >
             {/* Left Column: Text */}
             <div className="hero-content">
-                <span className="hero-greeting">I'm Saheel,</span>
+                <div className="hero-eyebrow">I'm Saheel</div>
                 <h1 className="hero-headline">
-                    I help brands<br />
-                    leverage the power<br />
-                    of digital marketing.
+                    Digital marketer <br />
+                    <span className="highlight-text">and brand strategist.</span>
                 </h1>
+                <p className="hero-description">
+                    I'm adept in using digital tools for digital marketing across various industries.
+                </p>
             </div>
 
             {/* Center Column: Spacer (was Image) to keep grid structure or just empty div so spacing works */}

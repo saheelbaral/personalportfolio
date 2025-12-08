@@ -35,30 +35,65 @@
 .hero-content {
     z-index: 2;
     padding-bottom: 2rem;
-    max-width: 450px;
+    max-width: 550px;
+    /* Slightly wider for new text */
 }
 
-.hero-greeting {
-    font-size: 1.1rem;
-    font-weight: 400;
-    letter-spacing: 0.05em;
-    margin-bottom: 1.5rem;
+.hero-eyebrow {
+    font-family: 'Outfit', sans-serif;
+    font-size: 1rem;
+    font-weight: 600;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    margin-bottom: 1rem;
+    color: rgba(255, 255, 255, 0.7);
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.hero-eyebrow::before {
+    content: '';
     display: block;
-    opacity: 0.9;
-    font-family: 'Inter', sans-serif;
-    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
-    /* Add drop shadow for readability over image */
+    width: 40px;
+    height: 1px;
+    background-color: rgba(255, 255, 255, 0.5);
 }
 
 .hero-headline {
-    font-size: 2.8rem;
-    line-height: 1.2;
-    font-weight: 500;
-    letter-spacing: -0.02em;
+    font-family: 'Outfit', sans-serif;
+    font-size: 3.5rem;
+    /* Larger */
+    line-height: 1.1;
+    font-weight: 700;
     margin-top: 0;
-    margin-bottom: 2rem;
-    color: #fff;
-    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+    margin-bottom: 1.5rem;
+    color: #ffffff;
+    letter-spacing: -0.02em;
+    text-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.highlight-text {
+    background: linear-gradient(90deg, #a5b4fc, #e0e7ff);
+    /* Soft distinct gradient */
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-style: italic;
+    /* Added style */
+    font-weight: 800;
+    /* Heavier weight */
+}
+
+.hero-description {
+    font-family: 'Inter', sans-serif;
+    font-size: 1.1rem;
+    line-height: 1.6;
+    color: rgba(255, 255, 255, 0.85);
+    font-weight: 400;
+    max-width: 480px;
+    margin-top: 0;
+    /* subtle fade in could go here if animating */
 }
 
 /* Middle Column - Spacer */
@@ -95,9 +130,11 @@
     padding: 1.2rem;
     border-radius: 16px;
     color: #fff;
-    width: 100%;
-    max-width: 260px;
-    /* Slightly tighter */
+    width: 300px;
+    /* Increased width from 260px */
+    /* Remove max-width to force consistency */
+    box-sizing: border-box;
+    /* Ensure padding doesn't affect width */
     box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
     transition: transform 0.3s ease;
 }
@@ -192,6 +229,14 @@
         align-items: center;
         margin-left: 0;
         max-width: 100%;
-        width: auto;
+        width: 100%;
+        /* Ensure container fills width */
+    }
+
+    .glass-card {
+        width: 100%;
+        /* Override fixed width on mobile */
+        max-width: 320px;
+        /* Sensible max width for mobile cards */
     }
 }

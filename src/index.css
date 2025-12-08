@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Outfit:wght@300;400;500;600;700;800&display=swap');
+
 :root {
   font-family: 'Inter', system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
@@ -19,10 +21,34 @@ body {
   padding: 0;
   min-width: 320px;
   min-height: 100vh;
-  /* Add a subtle gradient background similar to reference if desired, 
-     but stick to solid dark #1a1a1a to match base for now. 
-     Maybe a soft radial gradient behind the center? */
-  background: radial-gradient(circle at 50% 50%, #2a2a2a 0%, #1a1a1a 100%);
+  transition: background-color 0.3s ease, color 0.3s ease;
+  background-attachment: fixed;
+  /* Parallax-like fixed background */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+body.dark-theme {
+  /* Use the generated fluid abstract background with a lighter overlay for MORE pattern visibility */
+  background-image:
+    linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)),
+    /* Reduced opactiy from 0.6 to 0.3 */
+    url('/src/assets/bg-pattern-dark.png');
+  /* Fallback color */
+  background-color: #0d090f;
+  color: rgba(255, 255, 255, 0.87);
+}
+
+body.light-theme {
+  /* Subtle geometric/dot pattern for light mode - INCREASED VISIBILITY */
+  background-color: #f0f2f5;
+  /* Slightly darker base for contrast */
+  background-image: radial-gradient(#94a3b8 1.5px, transparent 1.5px);
+  /* Darker dots, slightly larger */
+  background-size: 20px 20px;
+  /* Denser pattern */
+  color: #1a1a1a;
 }
 
 button {

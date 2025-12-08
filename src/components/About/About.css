@@ -1,0 +1,234 @@
+.about-container {
+    padding: 6rem 4rem;
+    max-width: 1200px;
+    margin: 0 auto;
+    font-family: 'Inter', sans-serif;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    border-radius: 24px;
+    /* Optional: Soften edges if it becomes a card-like section */
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+}
+
+body.dark-theme .about-container {
+    background-color: rgba(21, 14, 23, 0.85);
+    /* #150e17 with opacity */
+    color: #fff;
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+body.light-theme .about-container {
+    background-color: rgba(255, 255, 255, 0.85);
+    color: #1a1a1a;
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+    /* Subtle shadow for light mode separation */
+    border: 1px solid rgba(255, 255, 255, 0.4);
+}
+
+/* Top Section: Photo + Bio */
+.about-top {
+    display: grid;
+    grid-template-columns: 350px 1fr;
+    gap: 4rem;
+    margin-bottom: 5rem;
+    align-items: start;
+}
+
+.about-image-wrapper {
+    width: 100%;
+    aspect-ratio: 0.85;
+    /* Portrait-ish */
+    border-radius: 24px;
+    overflow: hidden;
+    position: relative;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+}
+
+.about-profile-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.about-image-wrapper:hover .about-profile-img {
+    transform: scale(1.03);
+}
+
+.about-bio {
+    display: flex;
+    flex-direction: column;
+    padding-top: 1rem;
+}
+
+.about-name {
+    font-family: 'Outfit', sans-serif;
+    font-size: 3rem;
+    margin: 0 0 1.5rem 0;
+    font-weight: 600;
+    /* Color handled by container scope */
+}
+
+.about-text {
+    font-size: 1.05rem;
+    line-height: 1.7;
+    margin-bottom: 1.5rem;
+    max-width: 700px;
+}
+
+body.dark-theme .about-text {
+    color: rgba(255, 255, 255, 0.75);
+}
+
+body.light-theme .about-text {
+    color: rgba(0, 0, 0, 0.75);
+}
+
+/* Skills Section */
+.about-skills {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+}
+
+.skill-column {
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+}
+
+.skill-heading {
+    font-family: 'Outfit', sans-serif;
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    /* Color handled by container scope */
+}
+
+.skill-card {
+    display: flex;
+    align-items: center;
+    backdrop-filter: blur(10px);
+    padding: 1rem 1.25rem;
+    border-radius: 12px;
+    transition: all 0.3s ease;
+    cursor: default;
+    /* Subtle noise/texture overlay via repeating gradient or similar */
+    background-image: repeating-linear-gradient(45deg,
+            rgba(255, 255, 255, 0.02) 0px,
+            rgba(255, 255, 255, 0.02) 1px,
+            transparent 1px,
+            transparent 4px);
+}
+
+body.dark-theme .skill-card {
+    background-color: rgba(255, 255, 255, 0.05);
+    /* Base color + texture above */
+    border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+body.light-theme .skill-card {
+    background-color: rgba(255, 255, 255, 0.6);
+    border: 1px solid rgba(0, 0, 0, 0.06);
+    /* Invert texture visibility slightly or keep subtle */
+    background-image: repeating-linear-gradient(45deg,
+            rgba(0, 0, 0, 0.02) 0px,
+            rgba(0, 0, 0, 0.02) 1px,
+            transparent 1px,
+            transparent 4px);
+}
+
+.skill-card:hover {
+    transform: translateY(-2px);
+}
+
+body.dark-theme .skill-card:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+    border-color: rgba(255, 255, 255, 0.15);
+}
+
+body.light-theme .skill-card:hover {
+    background-color: rgba(255, 255, 255, 0.8);
+    border-color: rgba(0, 0, 0, 0.1);
+}
+
+.skill-name {
+    font-size: 0.95rem;
+    font-weight: 500;
+}
+
+body.dark-theme .skill-name {
+    color: rgba(255, 255, 255, 0.9);
+}
+
+body.light-theme .skill-name {
+    color: rgba(0, 0, 0, 0.85);
+}
+
+/* Real Icons */
+.skill-icon-real {
+    font-size: 1.4rem;
+    margin-right: 12px;
+    /* Gradient text effect for icons */
+}
+
+body.dark-theme .skill-icon-real {
+    /* Color handled inline */
+    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3));
+}
+
+/* Specific fix for Notion or black icons in dark mode if needed, 
+   but since we hardcoded #000000 inline, we might need an override or filter if it's invisible.
+   Actually, let's filter invert it if the color is black. 
+   Or simpler: just make the Notion icon white in dark mode via CSS override! 
+*/
+body.dark-theme .skill-card:has(> .skill-name:contains("Notion")) .skill-icon-real {
+    /* This complex selector might not work in all browsers easily or requires structure match.
+       Easier: just set a class or use filter on the black icon. 
+       Let's assume the user meant 3 items TOTAL previously, but requested ADD 3 items now.
+       So we have 6.
+       For the Notion icon which is black (#000000), in dark mode (#0d090f background), it will be invisible.
+       We should change the inline style to a data attribute or class, OR just invert it globally if it's dark?
+       Let's stick to a filter.
+    */
+}
+
+/* Better approach: override the inline style with !important for specific dark mode cases if we had classes.
+   Since we don't, let's just make the Notion icon have a class or handle it.
+   Actually, the simplest fix for the Notion icon right now without changing JSX structure again
+   is to use a specific generic filter for dark mode on the icon.
+*/
+body.dark-theme .skill-icon-real[style*="#000000"] {
+    color: #ffffff !important;
+}
+
+body.light-theme .skill-icon-real {
+    /* Color handled inline */
+}
+
+
+/* Responsive */
+@media (max-width: 900px) {
+    .about-top {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+        text-align: center;
+    }
+
+    .about-image-wrapper {
+        width: 280px;
+        margin: 0 auto;
+    }
+
+    .about-bio {
+        align-items: center;
+    }
+
+    .about-skills {
+        grid-template-columns: 1fr;
+    }
+}
