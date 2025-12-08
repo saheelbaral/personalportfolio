@@ -53,7 +53,7 @@ const Footer = () => {
                     <h4 className="footer-heading">Connect</h4>
                     <div className="footer-social">
                         <a
-                            href="https://linkedin.com/in/saheelbaral"
+                            href="https://www.linkedin.com/in/baralsaheel"
                             target="_blank"
                             rel="noopener noreferrer"
                             className="footer-social-link"

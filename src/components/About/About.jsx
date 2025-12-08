@@ -45,14 +45,6 @@ const About = () => {
                         <FaUsers className="skill-icon-real" style={{ color: '#8b5cf6' }} /> {/* Violet */}
                         <span className="skill-name">User Personas</span>
                     </div>
-                    <div className="skill-card">
-                        <FaChartLine className="skill-icon-real" style={{ color: '#f43f5e' }} /> {/* Rose */}
-                        <span className="skill-name">Comp. Analysis</span>
-                    </div>
-                    <div className="skill-card">
-                        <FaBullseye className="skill-icon-real" style={{ color: '#ef4444' }} /> {/* Red */}
-                        <span className="skill-name">Growth Hacking</span>
-                    </div>
                 </div>
 
                 {/* Column 2 */}
@@ -73,10 +65,6 @@ const About = () => {
                     <div className="skill-card">
                         <FaEnvelope className="skill-icon-real" style={{ color: '#6366f1' }} /> {/* Indigo */}
                         <span className="skill-name">Email Marketing</span>
-                    </div>
-                    <div className="skill-card">
-                        <FaAd className="skill-icon-real" style={{ color: '#14b8a6' }} /> {/* Teal */}
-                        <span className="skill-name">Copywriting</span>
                     </div>
                     <div className="skill-card">
                         <FaHashtag className="skill-icon-real" style={{ color: '#d946ef' }} /> {/* Fuchsia */}
@@ -102,14 +90,6 @@ const About = () => {
                     <div className="skill-card">
                         <SiHubspot className="skill-icon-real" style={{ color: '#ff7a59' }} /> {/* HubSpot Orange */}
                         <span className="skill-name">HubSpot</span>
-                    </div>
-                    <div className="skill-card">
-                        <SiSemrush className="skill-icon-real" style={{ color: '#ff642d' }} /> {/* Semrush Orange */}
-                        <span className="skill-name">Semrush</span>
-                    </div>
-                    <div className="skill-card">
-                        <SiNotion className="skill-icon-real" style={{ color: '#000000' }} /> {/* Notion Black/White - handle via CSS if needed, but black works for now unless dark mode issue. Use white in dark mode? Let's use a gray to be safe */}
-                        <span className="skill-name">Notion</span>
                     </div>
                 </div>
             </div>

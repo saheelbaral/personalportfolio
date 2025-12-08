@@ -78,7 +78,7 @@ const Navbar = () => {
         <span className="navbar-divider">|</span>
 
         <a
-          href="https://linkedin.com/in/saheelbaral"
+          href="https://www.linkedin.com/in/baralsaheel"
           target="_blank"
           rel="noopener noreferrer"
           className="contact-icon-button"
