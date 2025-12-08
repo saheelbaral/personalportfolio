@@ -172,7 +172,7 @@ const WeatherWidget = () => {
                         <FiMapPin className="widget-icon" />
                         <div className="card-header">Currently In</div>
                     </div>
-                    <div className="card-title">Sweden</div>
+                    <div className="card-title">Göteborg, Sweden</div>
                     <div className="weather-details">
                         <span className="temp">{temp}°</span>
                         <span className="condition">{label}</span>

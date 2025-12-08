@@ -12,15 +12,14 @@ const About = () => {
                 <div className="about-headline-wrapper">
                     <span className="about-eyebrow">// Intro</span>
                     <h2 className="about-headline-large">
-                        I’m a versatile <span className="highlight-red">marketer</span> who partners with <span className="highlight-red">brands</span> to turn ideas into <span className="highlight-red">real growth.</span> I focus on clear strategies, sharp decisions, and fast execution.
+                        I’m a versatile <span className="highlight-red">marketer</span> who works with <span className="highlight-red">brands</span> to turn ideas into <span className="highlight-red">real growth.</span> I focus on clear strategies, sharp decisions, and fast execution.
                     </h2>
                 </div>
 
                 <div className="about-subtext-wrapper">
                     <p className="about-subtext">
-                        Bringing your vision to life quickly and efficiently—whether it’s branding, campaigns, or analytics—I’ve got it covered, delivering smooth and effective solutions from start to finish.
+                        A great digital marketer solves small problems everyday. Along the process, the picture is big, and efforts across various domains lead to brilliant, award winning digital campaigns.
                     </p>
-                    <button className="about-cta-button">See my Work</button>
                 </div>
             </div>
 

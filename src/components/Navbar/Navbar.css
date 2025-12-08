@@ -78,6 +78,36 @@
   background: transparent;
 }
 
+/* Contact Icon Buttons - works for both button and anchor */
+.contact-icon-button {
+  background: transparent;
+  border: none;
+  color: #fff;
+  font-size: 1.1rem;
+  cursor: pointer;
+  padding: 0.4rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 6px;
+  transition: all 0.2s ease;
+  opacity: 0.8;
+  text-decoration: none;
+}
+
+.contact-icon-button:hover {
+  opacity: 1;
+  background: rgba(255, 255, 255, 0.1);
+}
+
+body.light-theme .contact-icon-button {
+  color: #1a1a1a;
+}
+
+body.light-theme .contact-icon-button:hover {
+  background: rgba(0, 0, 0, 0.05);
+}
+
 /* Light Theme Overrides */
 body.light-theme .navbar-left {
   background: rgba(255, 255, 255, 0.75);
@@ -105,3 +135,142 @@ body.light-theme .navbar {
 }
 
 /* Remove old CTA styles if no longer needed or keep if reused elsewhere */
+
+/* Contact Dropdown */
+.contact-dropdown-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.contact-combined-button {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.contact-icon-button {
+  background: transparent;
+  border: none;
+  color: #fff;
+  font-size: 1.1rem;
+  cursor: pointer;
+  padding: 0.4rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 6px;
+  transition: all 0.2s ease;
+  opacity: 0.8;
+}
+
+.contact-icon-button:hover {
+  opacity: 1;
+  background: rgba(255, 255, 255, 0.1);
+}
+
+body.light-theme .contact-icon-button {
+  color: #1a1a1a;
+}
+
+body.light-theme .contact-icon-button:hover {
+  background: rgba(0, 0, 0, 0.05);
+}
+
+.contact-dropdown {
+  position: absolute;
+  top: calc(100% + 0.5rem);
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(30, 30, 30, 0.95);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  padding: 0.5rem;
+  min-width: 250px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+  animation: dropdownSlide 0.2s ease;
+  z-index: 1000;
+}
+
+body.light-theme .contact-dropdown {
+  background: rgba(255, 255, 255, 0.95);
+  border-color: rgba(0, 0, 0, 0.1);
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+}
+
+@keyframes dropdownSlide {
+  from {
+    opacity: 0;
+    transform: translateX(-50%) translateY(-10px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+  }
+}
+
+.contact-dropdown-item {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  padding: 0.8rem 1rem;
+  border-radius: 8px;
+  color: #fff;
+  font-size: 0.9rem;
+  transition: all 0.2s ease;
+  position: relative;
+}
+
+.contact-dropdown-item:hover {
+  background: rgba(255, 255, 255, 0.05);
+}
+
+body.light-theme .contact-dropdown-item {
+  color: #1a1a1a;
+}
+
+body.light-theme .contact-dropdown-item:hover {
+  background: rgba(0, 0, 0, 0.03);
+}
+
+.contact-item-icon {
+  font-size: 1rem;
+  opacity: 0.7;
+  flex-shrink: 0;
+}
+
+.contact-dropdown-item span {
+  font-weight: 500;
+  flex: 1;
+}
+
+.copy-button {
+  background: transparent;
+  border: none;
+  color: #fff;
+  font-size: 1rem;
+  cursor: pointer;
+  padding: 0.3rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 4px;
+  transition: all 0.2s ease;
+  opacity: 0.6;
+  flex-shrink: 0;
+}
+
+.copy-button:hover {
+  opacity: 1;
+  background: rgba(255, 255, 255, 0.1);
+}
+
+body.light-theme .copy-button {
+  color: #1a1a1a;
+}
+
+body.light-theme .copy-button:hover {
+  background: rgba(0, 0, 0, 0.08);
+}

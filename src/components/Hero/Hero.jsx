@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import './Hero.css';
 import heroBg from '../../assets/hero-bg-full.png';
 import heroBgLight from '../../assets/hero-light.png';
@@ -8,9 +8,16 @@ import { FiClock, FiLayers, FiMusic } from 'react-icons/fi';
 
 const Hero = () => {
     const { isDarkMode } = useTheme();
+    const [currentTime, setCurrentTime] = useState(new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }));
 
-    // Simple time formatter for the "Local Time" widget
-    const currentTime = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+    // Update time every second
+    useEffect(() => {
+        const timer = setInterval(() => {
+            setCurrentTime(new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }));
+        }, 1000);
+
+        return () => clearInterval(timer);
+    }, []);
 
     return (
         <div

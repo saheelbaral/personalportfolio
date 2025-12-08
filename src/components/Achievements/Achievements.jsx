@@ -13,7 +13,7 @@ const Achievements = () => {
                 { label: "HubSpot", icon: <SiHubspot style={{ color: '#ff7a59' }} /> },
                 { label: "Paid Ads", icon: <FaAd style={{ color: '#14b8a6' }} /> }
             ],
-            clients: "iCaptain, Newmew"
+            clients: "Sports SaaS"
         },
         {
             title: "GENERATED 50K+ LEADS",
@@ -23,7 +23,7 @@ const Achievements = () => {
                 { label: "Google Ads", icon: <SiGoogleanalytics style={{ color: '#E37400' }} /> },
                 { label: "Strategy", icon: <FaChartLine style={{ color: '#f43f5e' }} /> }
             ],
-            clients: "iCaptain, Newmew"
+            clients: "University / Education"
         },
         {
             title: "DOMINATED BRAND SHARE",
@@ -33,7 +33,7 @@ const Achievements = () => {
                 { label: "Content", icon: <FaShareAlt style={{ color: '#8b5cf6' }} /> },
                 { label: "Organic", icon: <SiHubspot style={{ color: '#10b981' }} /> }
             ],
-            clients: "iCaptain, Newmew"
+            clients: "Brand Consultancy"
         }
     ];
 

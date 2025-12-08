@@ -3,6 +3,7 @@ import Navbar from './components/Navbar/Navbar';
 import Hero from './components/Hero/Hero';
 import About from './components/About/About';
 import Testimonials from './components/Testimonials/Testimonials';
+import Footer from './components/Footer/Footer';
 import { ThemeProvider } from './context/ThemeContext';
 
 function App() {
@@ -13,6 +14,7 @@ function App() {
         <Hero />
         <About />
         <Testimonials />
+        <Footer />
       </div>
     </ThemeProvider>
   );
