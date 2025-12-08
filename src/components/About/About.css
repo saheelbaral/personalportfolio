@@ -1,172 +1,232 @@
+/* Main Container */
 .about-container {
-    padding: 6rem 4rem;
-    max-width: 1200px;
-    margin: 0 auto;
+    padding: 6rem 5rem;
+    max-width: 1280px;
+    margin: 4rem auto;
     font-family: 'Inter', sans-serif;
-    transition: background-color 0.3s ease, color 0.3s ease;
-    border-radius: 24px;
-    /* Optional: Soften edges if it becomes a card-like section */
-    margin-top: 2rem;
-    margin-bottom: 2rem;
+    transition: all 0.5s ease;
+    border-radius: 32px;
+    position: relative;
+    overflow: hidden;
 }
 
 body.dark-theme .about-container {
-    background-color: rgba(21, 14, 23, 0.85);
-    /* #150e17 with opacity */
-    color: #fff;
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
-    border: 1px solid rgba(255, 255, 255, 0.05);
+    /* More subtle glass effect */
+    background: rgba(255, 255, 255, 0.02);
+    backdrop-filter: blur(40px);
+    -webkit-backdrop-filter: blur(40px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    box-shadow: 0 24px 64px rgba(0, 0, 0, 0.2);
 }
 
 body.light-theme .about-container {
-    background-color: rgba(255, 255, 255, 0.85);
-    color: #1a1a1a;
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
-    /* Subtle shadow for light mode separation */
-    border: 1px solid rgba(255, 255, 255, 0.4);
+    background: rgba(255, 255, 255, 0.6);
+    backdrop-filter: blur(40px);
+    border: 1px solid rgba(255, 255, 255, 0.8);
+    box-shadow: 0 24px 64px rgba(0, 0, 0, 0.05);
 }
 
-/* Top Section: Photo + Bio */
+/* Text-Centric Top Section */
 .about-top {
-    display: grid;
-    grid-template-columns: 350px 1fr;
-    gap: 4rem;
-    margin-bottom: 5rem;
-    align-items: start;
-}
-
-.about-image-wrapper {
-    width: 100%;
-    aspect-ratio: 0.85;
-    /* Portrait-ish */
-    border-radius: 24px;
-    overflow: hidden;
-    position: relative;
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
-}
-
-.about-profile-img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    transition: transform 0.5s ease;
-}
-
-.about-image-wrapper:hover .about-profile-img {
-    transform: scale(1.03);
-}
-
-.about-bio {
     display: flex;
     flex-direction: column;
-    padding-top: 1rem;
+    gap: 3rem;
+    margin-bottom: 6rem;
+    text-align: left;
+    max-width: 1100px;
 }
 
-.about-name {
+.about-headline-wrapper {
+    position: relative;
+}
+
+.about-eyebrow {
     font-family: 'Outfit', sans-serif;
-    font-size: 3rem;
-    margin: 0 0 1.5rem 0;
-    font-weight: 600;
-    /* Color handled by container scope */
-}
-
-.about-text {
-    font-size: 1.05rem;
-    line-height: 1.7;
+    font-size: 0.9rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.25em;
     margin-bottom: 1.5rem;
-    max-width: 700px;
+    display: inline-block;
+    color: #ef4444;
+    /* High contrast red like reference */
 }
 
-body.dark-theme .about-text {
-    color: rgba(255, 255, 255, 0.75);
+/* Specific red brand color from reference */
+.highlight-red {
+    color: #ef4444;
+    font-weight: 700;
 }
 
-body.light-theme .about-text {
-    color: rgba(0, 0, 0, 0.75);
+.about-headline-large {
+    font-family: 'Outfit', sans-serif;
+    font-size: 3.5rem;
+    /* Large impact */
+    font-weight: 600;
+    line-height: 1.1;
+    letter-spacing: -0.03em;
+    margin: 0;
+    max-width: 100%;
 }
 
-/* Skills Section */
+/* Responsive font scaling */
+@media (min-width: 1024px) {
+    .about-headline-large {
+        font-size: 4.5rem;
+    }
+}
+
+body.dark-theme .about-headline-large {
+    color: #f1f5f9;
+    /* Off-white */
+}
+
+body.light-theme .about-headline-large {
+    color: #0f172a;
+    /* Dark slate */
+}
+
+/* Subtext & CTA */
+.about-subtext-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 2rem;
+    max-width: 600px;
+    margin-left: auto;
+    /* Align to right for varied layout, or remove for left align */
+}
+
+.about-subtext {
+    font-family: 'Inter', sans-serif;
+    font-size: 1.1rem;
+    line-height: 1.6;
+    color: rgba(255, 255, 255, 0.6);
+}
+
+body.light-theme .about-subtext {
+    color: rgba(0, 0, 0, 0.6);
+}
+
+.about-cta-button {
+    background: transparent;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: #fff;
+    padding: 0.8rem 1.6rem;
+    border-radius: 50px;
+    font-family: 'Outfit', sans-serif;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+body.light-theme .about-cta-button {
+    border-color: rgba(0, 0, 0, 0.2);
+    color: #1a1a1a;
+}
+
+.about-cta-button:hover {
+    background: rgba(255, 255, 255, 0.1);
+    transform: translateY(-2px);
+    border-color: #fff;
+}
+
+body.light-theme .about-cta-button:hover {
+    background: rgba(0, 0, 0, 0.05);
+    border-color: #000;
+}
+
+/* Skills Grid */
 .about-skills {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 2rem;
+    gap: 3rem;
+    /* More breathing room */
 }
 
 .skill-column {
     display: flex;
     flex-direction: column;
-    gap: 0.8rem;
+    gap: 1rem;
 }
 
 .skill-heading {
     font-family: 'Outfit', sans-serif;
-    font-size: 1.1rem;
-    font-weight: 600;
-    margin-bottom: 1rem;
-    /* Color handled by container scope */
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
 
+body.dark-theme .skill-heading {
+    color: rgba(255, 255, 255, 0.5);
+}
+
+body.light-theme .skill-heading {
+    color: rgba(0, 0, 0, 0.5);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+/* Skill Cards */
 .skill-card {
     display: flex;
     align-items: center;
-    backdrop-filter: blur(10px);
-    padding: 1rem 1.25rem;
-    border-radius: 12px;
-    transition: all 0.3s ease;
-    cursor: default;
-    /* Subtle noise/texture overlay via repeating gradient or similar */
-    background-image: repeating-linear-gradient(45deg,
-            rgba(255, 255, 255, 0.02) 0px,
-            rgba(255, 255, 255, 0.02) 1px,
-            transparent 1px,
-            transparent 4px);
+    padding: 1.2rem 1.5rem;
+    border-radius: 16px;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
 }
 
 body.dark-theme .skill-card {
-    background-color: rgba(255, 255, 255, 0.05);
-    /* Base color + texture above */
-    border: 1px solid rgba(255, 255, 255, 0.08);
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.06);
 }
 
 body.light-theme .skill-card {
-    background-color: rgba(255, 255, 255, 0.6);
+    background: #fff;
     border: 1px solid rgba(0, 0, 0, 0.06);
-    /* Invert texture visibility slightly or keep subtle */
-    background-image: repeating-linear-gradient(45deg,
-            rgba(0, 0, 0, 0.02) 0px,
-            rgba(0, 0, 0, 0.02) 1px,
-            transparent 1px,
-            transparent 4px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
 }
 
 .skill-card:hover {
-    transform: translateY(-2px);
+    transform: translateY(-4px) scale(1.02);
 }
 
 body.dark-theme .skill-card:hover {
-    background-color: rgba(255, 255, 255, 0.1);
-    border-color: rgba(255, 255, 255, 0.15);
+    background: rgba(255, 255, 255, 0.06);
+    border-color: rgba(255, 255, 255, 0.2);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
 }
 
 body.light-theme .skill-card:hover {
-    background-color: rgba(255, 255, 255, 0.8);
-    border-color: rgba(0, 0, 0, 0.1);
+    box-shadow: 0 12px 32px rgba(99, 102, 241, 0.15);
+    /* Soft colored shadow */
 }
 
 .skill-name {
-    font-size: 0.95rem;
+    font-size: 1rem;
     font-weight: 500;
+    transition: color 0.3s;
 }
 
 body.dark-theme .skill-name {
-    color: rgba(255, 255, 255, 0.9);
+    color: rgba(255, 255, 255, 0.8);
 }
 
 body.light-theme .skill-name {
-    color: rgba(0, 0, 0, 0.85);
+    color: #1e293b;
+}
+
+.skill-card:hover .skill-name {
+    font-weight: 600;
+}
+
+body.dark-theme .skill-card:hover .skill-name {
+    color: #fff;
 }
 
 /* Real Icons */
@@ -186,16 +246,9 @@ body.dark-theme .skill-icon-real {
    Actually, let's filter invert it if the color is black. 
    Or simpler: just make the Notion icon white in dark mode via CSS override! 
 */
-body.dark-theme .skill-card:has(> .skill-name:contains("Notion")) .skill-icon-real {
-    /* This complex selector might not work in all browsers easily or requires structure match.
-       Easier: just set a class or use filter on the black icon. 
-       Let's assume the user meant 3 items TOTAL previously, but requested ADD 3 items now.
-       So we have 6.
-       For the Notion icon which is black (#000000), in dark mode (#0d090f background), it will be invisible.
-       We should change the inline style to a data attribute or class, OR just invert it globally if it's dark?
-       Let's stick to a filter.
-    */
-}
+/* body.dark-theme .skill-card:has(> .skill-name:contains("Notion")) .skill-icon-real {
+    This complex selector ...
+} */
 
 /* Better approach: override the inline style with !important for specific dark mode cases if we had classes.
    Since we don't, let's just make the Notion icon have a class or handle it.
@@ -206,29 +259,36 @@ body.dark-theme .skill-icon-real[style*="#000000"] {
     color: #ffffff !important;
 }
 
-body.light-theme .skill-icon-real {
-    /* Color handled inline */
-}
+/* body.light-theme .skill-icon-real {
+    Color handled inline
+} */
 
 
 /* Responsive */
-@media (max-width: 900px) {
+/* Responsive */
+@media (max-width: 1024px) {
     .about-top {
-        grid-template-columns: 1fr;
+        margin-bottom: 4rem;
         gap: 2rem;
-        text-align: center;
     }
 
-    .about-image-wrapper {
-        width: 280px;
-        margin: 0 auto;
+    .about-headline-large {
+        font-size: 2.5rem;
+        /* Smaller on mobile */
     }
 
-    .about-bio {
-        align-items: center;
+    .about-subtext-wrapper {
+        margin-left: 0;
+        width: 100%;
+        align-items: flex-start;
+    }
+
+    .about-subtext {
+        font-size: 1rem;
     }
 
     .about-skills {
         grid-template-columns: 1fr;
+        /* Stack on mobile */
     }
 }

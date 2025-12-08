@@ -1,0 +1,330 @@
+/* Section Container */
+.testimonials-section {
+    padding: 2rem 5rem 6rem 5rem;
+    max-width: 1280px;
+    margin: 0 auto;
+    font-family: 'Inter', sans-serif;
+    position: relative;
+}
+
+/* Divider Break */
+.section-divider {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+    padding-top: 4rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+body.light-theme .section-divider {
+    border-top-color: rgba(0, 0, 0, 0.05);
+}
+
+.divider-line {
+    height: 1px;
+    width: 60px;
+    background: linear-gradient(90deg, #6366f1, transparent);
+    opacity: 0.8;
+}
+
+.divider-text {
+    font-size: 0.85rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    opacity: 0.6;
+    background: linear-gradient(90deg, #fff, rgba(255, 255, 255, 0.5));
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+body.light-theme .divider-text {
+    background: linear-gradient(90deg, #000, rgba(0, 0, 0, 0.5));
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+/* Heading */
+.testimonials-heading {
+    font-family: 'Outfit', sans-serif;
+    font-size: 3.5rem;
+    font-weight: 700;
+    margin-bottom: 5rem;
+    background: linear-gradient(180deg, #fff 0%, #cbd5e1 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    letter-spacing: -0.02em;
+}
+
+body.light-theme .testimonials-heading {
+    background: linear-gradient(180deg, #1e293b 0%, #475569 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+/* Grid */
+.testimonials-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    /* 4 in a row */
+    gap: 2rem;
+}
+
+/* Flip Card Component */
+.testimonial-card {
+    background-color: transparent;
+    width: 100%;
+    aspect-ratio: 3/4.2;
+    perspective: 1000px;
+    cursor: pointer;
+}
+
+.card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    text-align: left;
+    transition: transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+    /* Bouncy spring feel */
+    transform-style: preserve-3d;
+    border-radius: 20px;
+}
+
+/* Flip State */
+.testimonial-card.flipped .card-inner {
+    transform: rotateY(180deg);
+}
+
+/* Hover prompt animation - only when NOT flipped */
+.testimonial-card:not(.flipped):hover .card-inner {
+    transform: rotateY(10deg) translateY(-5px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+}
+
+/* Front & Back Common - Glassmorphism Base */
+.card-front,
+.card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    border-radius: 20px;
+    overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    /* Subtle glass border */
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+}
+
+body.light-theme .card-front,
+body.light-theme .card-back {
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+}
+
+/* Front Styling - Glass Effect */
+.card-front {
+    background: rgba(255, 255, 255, 0.03);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+}
+
+body.light-theme .card-front {
+    background: rgba(255, 255, 255, 0.7);
+}
+
+.client-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: grayscale(100%) contrast(1.1);
+    /* Editorial look */
+    transition: all 0.5s ease;
+    opacity: 0.8;
+}
+
+.testimonial-card:hover .client-image {
+    filter: grayscale(0%) contrast(1);
+    opacity: 1;
+    transform: scale(1.05);
+}
+
+.front-content {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 1.5rem;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.9), transparent);
+    color: #fff;
+    z-index: 2;
+    transform: translateY(0);
+    transition: transform 0.3s ease;
+}
+
+.testimonial-card:hover .front-content {
+    transform: translateY(-5px);
+}
+
+.client-name {
+    font-family: 'Outfit', sans-serif;
+    font-size: 1.25rem;
+    font-weight: 700;
+    margin-bottom: 0.2rem;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.client-role {
+    font-size: 0.8rem;
+    opacity: 0.9;
+    font-weight: 500;
+    letter-spacing: 0.02em;
+}
+
+/* Back Styling - Premium Dark Gradient */
+.card-back {
+    /* Deep rich gradient */
+    background: linear-gradient(135deg, #1e1e24 0%, #2d2d35 100%);
+    color: white;
+    transform: rotateY(180deg);
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    /* Noise texture overlay */
+    background-image:
+        repeating-linear-gradient(45deg, rgba(255, 255, 255, 0.03) 0px, rgba(255, 255, 255, 0.03) 1px, transparent 1px, transparent 4px),
+        linear-gradient(135deg, #1e1e24 0%, #2d2d35 100%);
+}
+
+body.light-theme .card-back {
+    background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+    color: #1e293b;
+    background-image:
+        repeating-linear-gradient(45deg, rgba(0, 0, 0, 0.02) 0px, rgba(0, 0, 0, 0.02) 1px, transparent 1px, transparent 4px),
+        linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+}
+
+.rating {
+    display: flex;
+    align-items: center;
+    gap: 0.2rem;
+}
+
+.star-filled {
+    color: #ffd700;
+    /* Gold */
+    font-size: 0.9rem;
+    filter: drop-shadow(0 0 5px rgba(255, 215, 0, 0.4));
+}
+
+.star-empty {
+    color: rgba(255, 255, 255, 0.1);
+}
+
+body.light-theme .star-empty {
+    color: rgba(0, 0, 0, 0.1);
+}
+
+.rating-num {
+    margin-left: 0.8rem;
+    font-size: 0.75rem;
+    opacity: 0.6;
+    letter-spacing: 0.05em;
+    font-weight: 600;
+}
+
+.review-text {
+    font-size: 1rem;
+    line-height: 1.6;
+    font-style: italic;
+    opacity: 0.9;
+    font-family: 'Inter', sans-serif;
+    font-weight: 300;
+}
+
+body.light-theme .review-text {
+    font-weight: 400;
+}
+
+/* Mini Profile at bottom of back */
+.mini-profile {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding-top: 1rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+body.light-theme .mini-profile {
+    border-top-color: rgba(0, 0, 0, 0.1);
+}
+
+.mini-avatar {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid rgba(255, 255, 255, 0.2);
+}
+
+body.light-theme .mini-avatar {
+    border-color: rgba(0, 0, 0, 0.1);
+}
+
+.mini-name {
+    display: block;
+    font-weight: 700;
+    font-size: 0.85rem;
+}
+
+.mini-role {
+    display: block;
+    font-size: 0.7rem;
+    opacity: 0.7;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+/* Animations */
+@keyframes glow-pulse {
+    0% {
+        box-shadow: 0 0 5px rgba(99, 102, 241, 0.2);
+    }
+
+    50% {
+        box-shadow: 0 0 20px rgba(99, 102, 241, 0.6);
+    }
+
+    100% {
+        box-shadow: 0 0 5px rgba(99, 102, 241, 0.2);
+    }
+}
+
+.testimonial-card:hover .card-front {
+    border-color: rgba(255, 255, 255, 0.3);
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+    .testimonials-grid {
+        grid-template-columns: 1fr;
+        max-width: 400px;
+        margin: 0 auto;
+    }
+
+    .testimonials-heading {
+        font-size: 2.5rem;
+        text-align: center;
+    }
+
+    .section-divider {
+        justify-content: center;
+    }
+}

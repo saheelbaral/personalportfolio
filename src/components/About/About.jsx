@@ -3,29 +3,28 @@ import './About.css';
 import profileImg from '../../assets/profile.png';
 import { FaChessKnight, FaSearch, FaMapMarked, FaGlobe, FaShareAlt, FaPenFancy, FaUsers, FaChartLine, FaBullseye, FaEnvelope, FaAd, FaHashtag } from 'react-icons/fa';
 import { SiGoogleanalytics, SiMeta, SiFigma, SiHubspot, SiSemrush, SiNotion } from 'react-icons/si';
+import Achievements from '../Achievements/Achievements';
 
 const About = () => {
     return (
         <section className="about-container">
             <div className="about-top">
-                <div className="about-image-wrapper">
-                    <img src={profileImg} alt="Saheel" className="about-profile-img" />
+                <div className="about-headline-wrapper">
+                    <span className="about-eyebrow">// Intro</span>
+                    <h2 className="about-headline-large">
+                        I’m a versatile <span className="highlight-red">marketer</span> who partners with <span className="highlight-red">brands</span> to turn ideas into <span className="highlight-red">real growth.</span> I focus on clear strategies, sharp decisions, and fast execution.
+                    </h2>
                 </div>
-                <div className="about-bio">
-                    <h2 className="about-name">Saheel Baral</h2>
-                    <p className="about-text">
-                        Effective digital marketing is about connecting the right message with the right audience at the perfect moment.
-                        It’s about understanding human behavior and leveraging data to build meaningful relationships between brands and consumers.
+
+                <div className="about-subtext-wrapper">
+                    <p className="about-subtext">
+                        Bringing your vision to life quickly and efficiently—whether it’s branding, campaigns, or analytics—I’ve got it covered, delivering smooth and effective solutions from start to finish.
                     </p>
-                    <p className="about-text">
-                        With a background in brand strategy and digital execution, I’ve learned how to turn abstract ideas into measurable results.
-                        Whether it’s crafting a compelling narrative or optimizing a conversion funnel, I bridge the gap between creative vision and business growth.
-                    </p>
-                    <p className="about-text">
-                        I collaborate seamlessly with design teams and stakeholders to ensure every campaign is not just seen, but felt and acted upon.
-                    </p>
+                    <button className="about-cta-button">See my Work</button>
                 </div>
             </div>
+
+            <Achievements />
 
             <div className="about-skills">
                 {/* Column 1 */}
