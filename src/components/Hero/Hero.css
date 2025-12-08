@@ -11,6 +11,29 @@
     position: relative;
     overflow: hidden;
 
+    /* Widget Icon Layout */
+    .widget-icon-header {
+        display: flex;
+        align-items: center;
+        gap: 0.6rem;
+        /* Slightly wider gap for icon breathing room */
+        margin-bottom: 0;
+        /* Remove margin, control via parent or content gap */
+    }
+
+    .widget-icon {
+        font-size: 1.1rem;
+        /* Slightly larger icon */
+        color: rgba(255, 255, 255, 0.7);
+        /* Brighter */
+        margin-top: -2px;
+        /* Optical alignment correction */
+    }
+
+    body.light-theme .widget-icon {
+        color: rgba(0, 0, 0, 0.5);
+    }
+
     /* Background properties */
     background-size: cover;
     background-position: center;
@@ -144,47 +167,127 @@
     background: rgba(30, 30, 30, 0.5);
 }
 
-.card-header {
-    font-size: 0.7rem;
+.card-header,
+.card-header-inline {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.75rem;
     text-transform: uppercase;
-    letter-spacing: 0.15em;
-    opacity: 0.5;
-    margin-bottom: 0.4rem;
+    letter-spacing: 0.1em;
+    opacity: 0.6;
+    margin: 0;
+    /* Remove default margins, handled by parent spacing */
+    font-weight: 500;
+}
+
+/* Specific adjustment for margins if needed */
+.glass-card .card-header {
+    margin-bottom: 0;
+    /* Handled by widget-icon-header gap/margin */
 }
 
 .card-title {
     font-size: 1rem;
     font-weight: 500;
     margin: 0;
+    margin-top: 0.5rem;
+    /* Explicit gap between header row and content */
 }
 
 .card-sub {
-    font-size: 0.85rem;
-    opacity: 0.7;
-    margin-top: 0.2rem;
+    font-size: 0.8rem;
+    line-height: 1.4;
+    color: rgba(255, 255, 255, 0.5);
+    margin-top: 0.6rem;
+    font-weight: 400;
 }
 
-/* Compact Card Styles */
+body.light-theme .card-sub {
+    color: rgba(0, 0, 0, 0.5);
+}
+
+/* ... existing styles ... */
+
 .compact-card {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 0.8rem 1.2rem;
-    /* Reduced padding */
+    padding: 1rem 1.2rem;
+    /* Uniform padding */
     height: auto;
 }
 
 .card-header-inline {
-    font-size: 0.75rem;
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
-    opacity: 0.6;
+    /* Merged above */
 }
 
 .card-value-inline {
-    font-size: 0.95rem;
+    font-size: 1rem;
+    /* Match card-title size */
     font-weight: 500;
     letter-spacing: 0.05em;
+}
+
+/* Music Widget Styles */
+.music-card {
+    display: flex;
+    flex-direction: column;
+    padding: 1.2rem;
+}
+
+.music-content {
+    display: grid;
+    grid-template-columns: 48px 1fr;
+    align-items: center;
+    gap: 1rem;
+    margin-top: 0.5rem;
+}
+
+.album-art {
+    width: 48px;
+    height: 48px;
+    border-radius: 6px;
+    object-fit: cover;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+.music-info {
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+}
+
+.song-title {
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: #fff;
+    line-height: 1.2;
+}
+
+body.light-theme .song-title {
+    color: #1a1a1a;
+}
+
+.artist-name {
+    font-size: 0.8rem;
+    opacity: 0.6;
+    font-weight: 400;
+    line-height: 1.2;
+}
+
+.spotify-link {
+    font-size: 0.7rem;
+    color: #1DB954;
+    text-decoration: none;
+    font-weight: 500;
+    opacity: 0.7;
+    transition: opacity 0.2s ease;
+    margin-top: 0.2rem;
+    display: inline-block;
+}
+
+.spotify-link:hover {
+    opacity: 1;
+    text-decoration: underline;
 }
 
 /* Status Dot - Kept in CSS just in case needed later, though unused now */

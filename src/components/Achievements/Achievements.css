@@ -5,6 +5,17 @@
     width: 100%;
 }
 
+.achievements-heading {
+    display: block;
+    font-size: 0.9rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: #ef4444;
+    /* Match about-eyebrow color */
+    margin-bottom: 3rem;
+}
+
 .achievements-list {
     display: flex;
     flex-direction: column;
@@ -95,9 +106,17 @@ body.light-theme .achievement-details {
 
 .detail-row {
     display: flex;
-    align-items: baseline;
+    align-items: center;
+    /* Center align items vertically */
     gap: 1rem;
     font-size: 0.95rem;
+    min-height: 2rem;
+    /* Ensure consistent height */
+}
+
+/* Specific start alignment for scope row if chips wrap */
+.detail-row.scope-row {
+    align-items: flex-start;
 }
 
 .detail-label {
@@ -108,11 +127,55 @@ body.light-theme .achievement-details {
     opacity: 0.6;
     width: 60px;
     /* alignment */
+    padding-top: 0.4rem;
+    /* Align label with chips */
 }
 
 .detail-value {
     font-weight: 500;
     opacity: 0.9;
+    padding-top: 0.3rem;
+    /* Align text with label */
+}
+
+/* Scope Chips Styling */
+.scope-chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.8rem;
+}
+
+.scope-chip {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: rgba(255, 255, 255, 0.05);
+    /* Slight glass background */
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 0.4rem 0.8rem;
+    border-radius: 6px;
+    /* Rounded corners rectangular box */
+    font-size: 0.85rem;
+    font-weight: 500;
+    transition: all 0.2s ease;
+}
+
+body.light-theme .scope-chip {
+    background: rgba(0, 0, 0, 0.05);
+    border-color: rgba(0, 0, 0, 0.1);
+}
+
+.scope-chip:hover {
+    background: rgba(255, 255, 255, 0.1);
+    transform: translateY(-1px);
+}
+
+body.light-theme .scope-chip:hover {
+    background: rgba(0, 0, 0, 0.08);
+}
+
+.scope-chip svg {
+    font-size: 1rem;
 }
 
 /* Responsive */

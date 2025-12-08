@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import './WeatherWidget.css';
+import { FiMapPin } from 'react-icons/fi';
 
 import sunnyBg from '../../assets/weather/sunny.png';
 import cloudyBg from '../../assets/weather/cloudy.png';
@@ -167,7 +168,10 @@ const WeatherWidget = () => {
         <div className="glass-card weather-card minimal">
             <div className="weather-content-minimal">
                 <div className="weather-info">
-                    <div className="card-header">Currently In</div>
+                    <div className="widget-icon-header">
+                        <FiMapPin className="widget-icon" />
+                        <div className="card-header">Currently In</div>
+                    </div>
                     <div className="card-title">Sweden</div>
                     <div className="weather-details">
                         <span className="temp">{temp}°</span>
