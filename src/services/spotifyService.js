@@ -1,5 +1,5 @@
 // Spotify service to fetch live data from serverless function
-const SPOTIFY_API_URL = process.env.REACT_APP_SPOTIFY_API_URL || 'http://localhost:3000/api/spotify';
+const SPOTIFY_API_URL = import.meta.env.VITE_SPOTIFY_API_URL || 'https://personalportfolio-zeta-ten.vercel.app/api/spotify';
 
 export async function getNowPlaying() {
     try {
@@ -18,7 +18,7 @@ export async function getNowPlaying() {
             isPlaying: false,
             title: 'Song for Zula',
             artist: 'Phosphorescent',
-            albumArt: 'https://i.scdn.co/image/ab67616d0000b273c8b444df094279e70d0ed856',
+            albumArt: 'https://i.scdn.co/image/ab67616d0000b2739e1cfc756886ac782e363d79',
             songUrl: 'https://open.spotify.com/track/3mCsF3GF5VXfSQOSp1WMQd'
         };
     }

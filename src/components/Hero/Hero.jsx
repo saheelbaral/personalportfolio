@@ -5,17 +5,17 @@ import heroBgLight from '../../assets/hero-bg-light-new.jpg';
 import WeatherWidget from '../WeatherWidget/WeatherWidget';
 import { useTheme } from '../../context/ThemeContext';
 import { FiClock, FiLayers, FiMusic } from 'react-icons/fi';
-// import { getNowPlaying } from '../../services/spotifyService';
+import { getNowPlaying } from '../../services/spotifyService';
 
 const Hero = () => {
     const { isDarkMode } = useTheme();
     const [currentTime, setCurrentTime] = useState(new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }));
-    const [spotifyData] = useState({
+    const [spotifyData, setSpotifyData] = useState({
         isPlaying: false,
-        title: 'Song for Zula',
-        artist: 'Phosphorescent',
-        albumArt: 'https://i.scdn.co/image/ab67616d0000b2739e1cfc756886ac782e363d79',
-        songUrl: 'https://open.spotify.com/track/0WgALRIGJILxAYSC0j1FLN'
+        title: 'Loading...',
+        artist: '',
+        albumArt: null,
+        songUrl: null
     });
 
     // Update time every second
@@ -28,17 +28,17 @@ const Hero = () => {
     }, []);
 
     // Fetch Spotify data on mount and refresh every 30 seconds
-    // useEffect(() => {
-    //     const fetchSpotify = async () => {
-    //         const data = await getNowPlaying();
-    //         setSpotifyData(data);
-    //     };
+    useEffect(() => {
+        const fetchSpotify = async () => {
+            const data = await getNowPlaying();
+            setSpotifyData(data);
+        };
 
-    //     fetchSpotify(); // Initial fetch
-    //     const spotifyInterval = setInterval(fetchSpotify, 30000); // Refresh every 30 seconds
+        fetchSpotify(); // Initial fetch
+        const spotifyInterval = setInterval(fetchSpotify, 30000); // Refresh every 30 seconds
 
-    //     return () => clearInterval(spotifyInterval);
-    // }, []);
+        return () => clearInterval(spotifyInterval);
+    }, []);
 
     return (
         <div
