@@ -3,12 +3,12 @@ import './Testimonials.css';
 
 const Testimonials = () => {
     const reviews = [
-        { word: "AWESOME", text: "Totally transformed our brand presence.", author: "Max P.", company: "TechNova" },
-        { word: "VISIONARY", text: "Saw the future before we even did.", author: "Sarah L.", company: "FutureSoft" },
-        { word: "RELENTLESS", text: "Stopped at nothing to get results.", author: "David C.", company: "BoldMove" },
-        { word: "GENIUS", text: "Solved our biggest bottleneck instantly.", author: "Job G.", company: "InnovateX" },
-        { word: "FAST", text: "Delivered weeks ahead of schedule.", author: "Casandra M.", company: "SwiftLogistics" },
-        { word: "BOLD", text: "Not afraid to break the mold.", author: "Tom H.", company: "CreativeMinds" }
+        { word: "AWESOME", text: "Totally transformed our brand presence.", author: "Ashik L.", company: "SaaS Founder/CEO" },
+        { word: "VISIONARY", text: "Saw the future before we even did.", author: "Jackson W.", company: "Customer Success Manager" },
+        { word: "RELENTLESS", text: "Stopped at nothing to get results.", author: "Greg H.", company: "Customer Service Manager" },
+        { word: "GENIUS", text: "Solved our biggest bottleneck instantly.", author: "Martin M.", company: "Insurance Analyst" },
+        { word: "FAST", text: "Delivered weeks ahead of schedule.", author: "Andreas A.", company: "Entrepreneur" },
+        { word: "BOLD", text: "Not afraid to break the mold.", author: "Prabin S.", company: "Education Admin Director" }
     ];
 
     return (

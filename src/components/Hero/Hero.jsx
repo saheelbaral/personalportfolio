@@ -1,14 +1,22 @@
 import React, { useState, useEffect } from 'react';
 import './Hero.css';
-import heroBg from '../../assets/hero-bg-full.png';
-import heroBgLight from '../../assets/hero-light.png';
+import heroBg from '../../assets/hero-bg-new.png';
+import heroBgLight from '../../assets/hero-bg-light-new.jpg';
 import WeatherWidget from '../WeatherWidget/WeatherWidget';
 import { useTheme } from '../../context/ThemeContext';
 import { FiClock, FiLayers, FiMusic } from 'react-icons/fi';
+// import { getNowPlaying } from '../../services/spotifyService';
 
 const Hero = () => {
     const { isDarkMode } = useTheme();
     const [currentTime, setCurrentTime] = useState(new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }));
+    const [spotifyData] = useState({
+        isPlaying: false,
+        title: 'Song for Zula',
+        artist: 'Phosphorescent',
+        albumArt: 'https://i.scdn.co/image/ab67616d0000b2739e1cfc756886ac782e363d79',
+        songUrl: 'https://open.spotify.com/track/0WgALRIGJILxAYSC0j1FLN'
+    });
 
     // Update time every second
     useEffect(() => {
@@ -18,6 +26,19 @@ const Hero = () => {
 
         return () => clearInterval(timer);
     }, []);
+
+    // Fetch Spotify data on mount and refresh every 30 seconds
+    // useEffect(() => {
+    //     const fetchSpotify = async () => {
+    //         const data = await getNowPlaying();
+    //         setSpotifyData(data);
+    //     };
+
+    //     fetchSpotify(); // Initial fetch
+    //     const spotifyInterval = setInterval(fetchSpotify, 30000); // Refresh every 30 seconds
+
+    //     return () => clearInterval(spotifyInterval);
+    // }, []);
 
     return (
         <div
@@ -69,20 +90,24 @@ const Hero = () => {
                 <div className="glass-card music-card">
                     <div className="widget-icon-header">
                         <FiMusic className="widget-icon" />
-                        <div className="card-header">Listening To</div>
+                        <div className="card-header">{spotifyData.isPlaying ? 'Listening To' : 'Last Played'}</div>
                     </div>
                     <div className="music-content">
-                        <img
-                            src="https://i.scdn.co/image/ab67616d0000b2739e1cfc756886ac782e363d79"
-                            alt="Song for Zula album art"
-                            className="album-art"
-                        />
+                        {spotifyData.albumArt && (
+                            <img
+                                src={spotifyData.albumArt}
+                                alt={`${spotifyData.title} album art`}
+                                className="album-art"
+                            />
+                        )}
                         <div className="music-info">
-                            <div className="song-title">Song for Zula</div>
-                            <div className="artist-name">Phosphorescent</div>
-                            <a href="https://open.spotify.com/track/0WgALRIGJILxAYSC0j1FLN" target="_blank" rel="noopener noreferrer" className="spotify-link">
-                                Open in Spotify →
-                            </a>
+                            <div className="song-title">{spotifyData.title}</div>
+                            <div className="artist-name">{spotifyData.artist}</div>
+                            {spotifyData.songUrl && (
+                                <a href={spotifyData.songUrl} target="_blank" rel="noopener noreferrer" className="spotify-link">
+                                    Open in Spotify →
+                                </a>
+                            )}
                         </div>
                     </div>
                 </div>

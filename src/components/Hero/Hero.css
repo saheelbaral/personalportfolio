@@ -35,9 +35,13 @@
     }
 
     /* Background properties */
-    background-size: cover;
-    background-position: center;
+    background-size: 110%;
+    background-position: center 35%;
     background-repeat: no-repeat;
+    image-rendering: -webkit-optimize-contrast;
+    image-rendering: crisp-edges;
+    transform: translateZ(0);
+    backface-visibility: hidden;
 }
 
 /* Background Vignette / Overlay for Readability on Right */
@@ -52,6 +56,12 @@
     background: linear-gradient(to right, rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 0.2) 40%, rgba(0, 0, 0, 0.2) 60%, rgba(0, 0, 0, 0.7) 100%);
     z-index: 1;
     pointer-events: none;
+    transition: opacity 0.3s ease;
+}
+
+/* Light theme - make overlay transparent instead of hiding it */
+body.light-theme .hero-container::after {
+    opacity: 0;
 }
 
 /* Left Column - Text */
