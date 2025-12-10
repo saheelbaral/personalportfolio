@@ -1,5 +1,5 @@
 // Vercel Serverless Function for Spotify API
-const https = require('https');
+import https from 'https';
 
 const CLIENT_ID = process.env.SPOTIFY_CLIENT_ID;
 const CLIENT_SECRET = process.env.SPOTIFY_CLIENT_SECRET;
@@ -29,8 +29,16 @@ async function getAccessToken() {
             let data = '';
             res.on('data', (chunk) => data += chunk);
             res.on('end', () => {
-                const parsed = JSON.parse(data);
-                resolve(parsed.access_token);
+                try {
+                    const parsed = JSON.parse(data);
+                    if (parsed.access_token) {
+                        resolve(parsed.access_token);
+                    } else {
+                        reject(new Error('No access token in response'));
+                    }
+                } catch (error) {
+                    reject(error);
+                }
             });
         });
 
@@ -59,7 +67,13 @@ async function getCurrentlyPlaying(accessToken) {
 
             let data = '';
             res.on('data', (chunk) => data += chunk);
-            res.on('end', () => resolve(JSON.parse(data)));
+            res.on('end', () => {
+                try {
+                    resolve(JSON.parse(data));
+                } catch (error) {
+                    resolve(null);
+                }
+            });
         });
 
         req.on('error', reject);
@@ -81,7 +95,13 @@ async function getRecentlyPlayed(accessToken) {
         const req = https.request(options, (res) => {
             let data = '';
             res.on('data', (chunk) => data += chunk);
-            res.on('end', () => resolve(JSON.parse(data)));
+            res.on('end', () => {
+                try {
+                    resolve(JSON.parse(data));
+                } catch (error) {
+                    reject(error);
+                }
+            });
         });
 
         req.on('error', reject);
@@ -89,7 +109,7 @@ async function getRecentlyPlayed(accessToken) {
     });
 }
 
-module.exports = async (req, res) => {
+export default async function handler(req, res) {
     // Enable CORS
     res.setHeader('Access-Control-Allow-Origin', '*');
     res.setHeader('Access-Control-Allow-Methods', 'GET');
@@ -101,6 +121,15 @@ module.exports = async (req, res) => {
     }
 
     try {
+        // Check if environment variables are set
+        if (!CLIENT_ID || !CLIENT_SECRET || !REFRESH_TOKEN) {
+            console.error('Missing environment variables');
+            return res.status(500).json({
+                error: 'Server configuration error',
+                details: 'Missing Spotify credentials'
+            });
+        }
+
         const accessToken = await getAccessToken();
         let trackData = await getCurrentlyPlaying(accessToken);
 
@@ -116,14 +145,13 @@ module.exports = async (req, res) => {
         }
 
         if (!trackData || !trackData.item) {
-            res.status(200).json({
+            return res.status(200).json({
                 isPlaying: false,
                 title: 'Nothing playing',
                 artist: '',
                 albumArt: null,
                 songUrl: null
             });
-            return;
         }
 
         const track = trackData.item;
@@ -138,6 +166,9 @@ module.exports = async (req, res) => {
 
     } catch (error) {
         console.error('Spotify API Error:', error);
-        res.status(500).json({ error: 'Failed to fetch Spotify data' });
+        res.status(500).json({
+            error: 'Failed to fetch Spotify data',
+            message: error.message
+        });
     }
-};
+}
