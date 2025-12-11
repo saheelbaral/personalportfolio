@@ -1,0 +1,352 @@
+/* Philosophy Section - Flowing Timeline Design */
+.philosophy-section {
+    padding: 8rem 5rem;
+    max-width: 1200px;
+    margin: 0 auto;
+    font-family: 'Inter', sans-serif;
+    position: relative;
+}
+
+/* Header */
+.philosophy-header {
+    text-align: center;
+    margin-bottom: 6rem;
+}
+
+.philosophy-label {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.3em;
+    opacity: 0.5;
+    font-weight: 600;
+    display: block;
+    margin-bottom: 1rem;
+}
+
+.philosophy-title {
+    font-family: 'Outfit', sans-serif;
+    font-size: 4rem;
+    font-weight: 300;
+    letter-spacing: -0.03em;
+    margin: 0;
+}
+
+body.dark-theme .philosophy-title {
+    color: #f1f5f9;
+}
+
+body.light-theme .philosophy-title {
+    color: #0f172a;
+}
+
+/* Flowing Timeline */
+.principles-flow {
+    position: relative;
+    padding: 2rem 0;
+}
+
+/* Central flowing line */
+.principles-flow::before {
+    content: '';
+    position: absolute;
+    left: 50%;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background: linear-gradient(180deg,
+            transparent 0%,
+            rgba(99, 102, 241, 0.3) 10%,
+            rgba(99, 102, 241, 0.3) 90%,
+            transparent 100%);
+    transform: translateX(-50%);
+}
+
+body.light-theme .principles-flow::before {
+    background: linear-gradient(180deg,
+            transparent 0%,
+            rgba(0, 106, 167, 0.2) 10%,
+            rgba(0, 106, 167, 0.2) 90%,
+            transparent 100%);
+}
+
+/* Principle Items */
+.principle-item {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    gap: 3rem;
+    margin-bottom: 4rem;
+    align-items: center;
+    position: relative;
+}
+
+/* Left-aligned items */
+.principle-item.left .principle-content {
+    grid-column: 1;
+    text-align: right;
+    padding-right: 2rem;
+}
+
+.principle-item.left .principle-number {
+    grid-column: 2;
+}
+
+.principle-item.left .principle-connector {
+    grid-column: 3;
+}
+
+/* Right-aligned items */
+.principle-item.right .principle-content {
+    grid-column: 3;
+    text-align: left;
+    padding-left: 2rem;
+}
+
+.principle-item.right .principle-number {
+    grid-column: 2;
+}
+
+.principle-item.right .principle-connector {
+    grid-column: 1;
+}
+
+/* Number Circle */
+.principle-number {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Outfit', sans-serif;
+    font-size: 1.2rem;
+    font-weight: 700;
+    position: relative;
+    z-index: 2;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+body.dark-theme .principle-number {
+    background: rgba(255, 255, 255, 0.05);
+    border: 2px solid rgba(255, 255, 255, 0.1);
+    color: #f1f5f9;
+}
+
+body.light-theme .principle-number {
+    background: rgba(255, 255, 255, 0.8);
+    border: 2px solid rgba(0, 106, 167, 0.2);
+    color: #0f172a;
+}
+
+.principle-item:hover .principle-number {
+    transform: scale(1.15);
+    border-color: rgba(99, 102, 241, 0.5);
+}
+
+body.light-theme .principle-item:hover .principle-number {
+    border-color: rgba(0, 106, 167, 0.5);
+}
+
+/* Content */
+.principle-content {
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.principle-title {
+    font-family: 'Outfit', sans-serif;
+    font-size: 1.8rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    letter-spacing: -0.01em;
+}
+
+body.dark-theme .principle-title {
+    color: #f1f5f9;
+}
+
+body.light-theme .principle-title {
+    color: #0f172a;
+}
+
+.principle-thought {
+    font-size: 1.05rem;
+    line-height: 1.8;
+    opacity: 0.75;
+    font-weight: 300;
+    max-width: 450px;
+}
+
+body.dark-theme .principle-thought {
+    color: rgba(255, 255, 255, 0.8);
+}
+
+body.light-theme .principle-thought {
+    color: rgba(0, 0, 0, 0.7);
+}
+
+.principle-item.left .principle-thought {
+    margin-left: auto;
+}
+
+.principle-item.right .principle-thought {
+    margin-right: auto;
+}
+
+/* Hover effect on content */
+.principle-item:hover .principle-content {
+    transform: translateY(-4px);
+}
+
+/* Connector (empty space for visual balance) */
+.principle-connector {
+    height: 1px;
+}
+
+/* Footer */
+.philosophy-footer {
+    text-align: center;
+    margin-top: 6rem;
+    padding: 3rem 2rem;
+    border-radius: 24px;
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+body.dark-theme .philosophy-footer {
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+body.light-theme .philosophy-footer {
+    background: rgba(255, 255, 255, 0.5);
+    border: 1px solid rgba(255, 255, 255, 0.8);
+}
+
+.footer-insight {
+    font-size: 1.15rem;
+    line-height: 1.7;
+    font-style: italic;
+    opacity: 0.8;
+    font-weight: 300;
+    margin: 0;
+}
+
+body.dark-theme .footer-insight {
+    color: rgba(255, 255, 255, 0.8);
+}
+
+body.light-theme .footer-insight {
+    color: rgba(0, 0, 0, 0.7);
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+    .philosophy-title {
+        font-size: 3rem;
+    }
+
+    .principle-title {
+        font-size: 1.5rem;
+    }
+
+    .principle-thought {
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .philosophy-section {
+        padding: 4rem 1.5rem;
+    }
+
+    .philosophy-title {
+        font-size: 2.5rem;
+    }
+
+    /* Stack timeline vertically on mobile */
+    .principles-flow::before {
+        left: 30px;
+    }
+
+    .principle-item {
+        grid-template-columns: auto 1fr;
+        gap: 2rem;
+        margin-bottom: 3rem;
+    }
+
+    .principle-item.left .principle-content,
+    .principle-item.right .principle-content {
+        grid-column: 2;
+        text-align: left;
+        padding-left: 0;
+        padding-right: 0;
+    }
+
+    .principle-item.left .principle-number,
+    .principle-item.right .principle-number {
+        grid-column: 1;
+    }
+
+    .principle-item.left .principle-connector,
+    .principle-item.right .principle-connector {
+        display: none;
+    }
+
+    .principle-number {
+        width: 50px;
+        height: 50px;
+        font-size: 1rem;
+    }
+
+    .principle-title {
+        font-size: 1.3rem;
+    }
+
+    .principle-thought {
+        font-size: 0.95rem;
+        max-width: 100%;
+    }
+
+    .principle-item.left .principle-thought,
+    .principle-item.right .principle-thought {
+        margin-left: 0;
+        margin-right: 0;
+    }
+
+    .philosophy-footer {
+        margin-top: 4rem;
+        padding: 2rem 1.5rem;
+    }
+
+    .footer-insight {
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .philosophy-section {
+        padding: 3rem 1rem;
+    }
+
+    .philosophy-title {
+        font-size: 2rem;
+    }
+
+    .principle-item {
+        gap: 1.5rem;
+    }
+
+    .principle-number {
+        width: 45px;
+        height: 45px;
+        font-size: 0.9rem;
+    }
+
+    .principle-title {
+        font-size: 1.2rem;
+    }
+
+    .principle-thought {
+        font-size: 0.9rem;
+    }
+}

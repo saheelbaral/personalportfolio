@@ -274,15 +274,33 @@ body.light-theme .card-sub {
     .hero-container {
         display: flex;
         flex-direction: column;
-        min-height: auto;
-        padding: 80px 20px 40px;
-        gap: 30px;
+        justify-content: flex-start;
+        min-height: 100vh;
+        padding: 0 20px 40px;
+        gap: 20px;
+
+        /* Center the face and zoom out slightly */
+        background-size: auto 85%;
+        /* Zoom out to 85% height to show more of the image */
+        background-position: 45% 0%;
+        /* Shift right (55% instead of center/50%), position face in upper area */
+    }
+
+    /* Adjust overlay for mobile - darker at bottom where content is */
+    .hero-container::after {
+        background: linear-gradient(to bottom,
+                rgba(0, 0, 0, 0) 0%,
+                rgba(0, 0, 0, 0.2) 50%,
+                rgba(0, 0, 0, 0.6) 75%,
+                rgba(0, 0, 0, 0.8) 100%);
     }
 
     .hero-content {
         order: 1;
         max-width: 100%;
         padding-bottom: 0;
+        margin-top: 55vh;
+        /* Push content down - starts around 55% down the screen, below the face */
     }
 
     /* Hide spacer on mobile */
@@ -296,64 +314,65 @@ body.light-theme .card-sub {
         gap: 12px;
         margin-top: 0;
     }
+}
 
-    .hero-headline {
-        font-size: 2.5rem;
-    }
+.hero-headline {
+    font-size: 2.5rem;
+}
 
-    .hero-subheadline {
-        font-size: 1.8rem;
-    }
+.hero-subheadline {
+    font-size: 1.8rem;
+}
 
-    .hero-description {
-        font-size: 0.95rem;
-        line-height: 1.6;
-    }
+.hero-description {
+    font-size: 0.95rem;
+    line-height: 1.6;
+}
 
-    /* Widgets: 2 columns on mobile */
-    .hero-widgets {
-        grid-template-columns: 1fr 1fr;
-        gap: 12px;
-        margin-top: 0;
-    }
+/* Widgets: 2 columns on mobile */
+.hero-widgets {
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    margin-top: 0;
+}
 
-    .glass-card {
-        padding: 14px;
-    }
+.glass-card {
+    padding: 14px;
+}
 
-    .card-header {
-        font-size: 0.7rem;
-    }
+.card-header {
+    font-size: 0.7rem;
+}
 
-    .card-title {
-        font-size: 0.95rem;
-    }
+.card-title {
+    font-size: 0.95rem;
+}
 
-    .card-sub {
-        font-size: 0.75rem;
-    }
+.card-sub {
+    font-size: 0.75rem;
+}
 
-    .widget-icon {
-        font-size: 0.95rem;
-    }
+.widget-icon {
+    font-size: 0.95rem;
+}
 
-    /* Music card specific */
-    .music-card .album-art {
-        width: 45px;
-        height: 45px;
-    }
+/* Music card specific */
+.music-card .album-art {
+    width: 45px;
+    height: 45px;
+}
 
-    .music-card .song-title {
-        font-size: 0.85rem;
-    }
+.music-card .song-title {
+    font-size: 0.85rem;
+}
 
-    .music-card .artist-name {
-        font-size: 0.75rem;
-    }
+.music-card .artist-name {
+    font-size: 0.75rem;
+}
 
-    .spotify-link {
-        font-size: 0.7rem;
-    }
+.spotify-link {
+    font-size: 0.7rem;
+}
 }
 
 /* Small mobile */

@@ -7,8 +7,8 @@ const Testimonials = () => {
         { word: "VISIONARY", text: "Saw the future before we even did.", author: "Jackson W.", company: "Customer Success Manager" },
         { word: "RELENTLESS", text: "Stopped at nothing to get results.", author: "Greg H.", company: "Customer Service Manager" },
         { word: "GENIUS", text: "Solved our biggest bottleneck instantly.", author: "Martin M.", company: "Insurance Analyst" },
-        { word: "FAST", text: "Delivered weeks ahead of schedule.", author: "Andreas A.", company: "Entrepreneur" },
-        { word: "BOLD", text: "Not afraid to break the mold.", author: "Prabin S.", company: "Education Admin Director" }
+        { word: "FAST", text: "Delivered weeks ahead of schedule.", author: "Elliot A.", company: "Entrepreneur" },
+        { word: "BOLD", text: "Always showed up with bold ideas.", author: "Prabin S.", company: "Education Admin Director" }
     ];
 
     return (
