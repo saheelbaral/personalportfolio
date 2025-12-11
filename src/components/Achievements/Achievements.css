@@ -76,6 +76,117 @@ body.light-theme .achievement-title {
     color: #1a1a1a;
 }
 
+body.light-theme .achievement-scope-item {
+    background: rgba(99, 102, 241, 0.08);
+    color: rgba(99, 102, 241, 0.9);
+}
+
+/* ============================================
+   MOBILE RESPONSIVE STYLES
+   ============================================ */
+
+/* Tablet */
+@media (max-width: 1024px) {
+    .achievement-item {
+        grid-template-columns: 60px 1fr;
+        gap: 2rem;
+    }
+
+    .achievement-icon {
+        font-size: 3rem;
+    }
+
+    .achievement-title {
+        font-size: 1.5rem;
+    }
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+    .achievements-container {
+        margin: 4rem 0;
+    }
+
+    .achievements-heading {
+        font-size: 0.8rem;
+        margin-bottom: 2rem;
+    }
+
+    .achievements-list {
+        gap: 3rem;
+    }
+
+    .achievement-item {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+
+    .achievement-icon-wrapper {
+        justify-content: flex-start;
+        padding-top: 0;
+    }
+
+    .achievement-icon {
+        font-size: 2.5rem;
+    }
+
+    .achievement-title {
+        font-size: 1.3rem;
+    }
+
+    .achievement-description {
+        font-size: 0.95rem;
+    }
+
+    .achievement-scope {
+        flex-wrap: wrap;
+        gap: 0.6rem;
+    }
+
+    .achievement-scope-item {
+        font-size: 0.75rem;
+        padding: 0.4rem 0.8rem;
+    }
+
+    .achievement-scope-icon {
+        font-size: 0.9rem;
+    }
+
+    .achievement-clients {
+        font-size: 0.85rem;
+        padding: 0.4rem 0.9rem;
+    }
+}
+
+/* Small mobile */
+@media (max-width: 480px) {
+    .achievements-list {
+        gap: 2.5rem;
+    }
+
+    .achievement-icon {
+        font-size: 2rem;
+    }
+
+    .achievement-title {
+        font-size: 1.1rem;
+    }
+
+    .achievement-description {
+        font-size: 0.9rem;
+        line-height: 1.6;
+    }
+
+    .achievement-scope-item {
+        font-size: 0.7rem;
+        padding: 0.35rem 0.7rem;
+    }
+
+    .achievement-clients {
+        font-size: 0.8rem;
+    }
+}
+
 .achievement-clients {
     font-size: 0.95rem;
     font-weight: 600;

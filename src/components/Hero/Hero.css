@@ -249,7 +249,150 @@ body.light-theme .card-sub {
     grid-template-columns: 48px 1fr;
     align-items: center;
     gap: 1rem;
-    margin-top: 0.5rem;
+    margin-top: 0.25rem;
+}
+
+/* ============================================
+   MOBILE RESPONSIVE STYLES
+   ============================================ */
+
+/* Tablet and below */
+@media (max-width: 1024px) {
+    .hero-container {
+        grid-template-columns: 1fr 1fr;
+        padding: 0 2rem;
+        padding-top: 5rem;
+    }
+
+    .hero-widgets {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+    .hero-container {
+        display: flex;
+        flex-direction: column;
+        min-height: auto;
+        padding: 80px 20px 40px;
+        gap: 30px;
+    }
+
+    .hero-content {
+        order: 1;
+        max-width: 100%;
+        padding-bottom: 0;
+    }
+
+    /* Hide spacer on mobile */
+    .hero-spacer {
+        display: none;
+    }
+
+    .hero-widgets {
+        order: 2;
+        grid-template-columns: 1fr 1fr;
+        gap: 12px;
+        margin-top: 0;
+    }
+
+    .hero-headline {
+        font-size: 2.5rem;
+    }
+
+    .hero-subheadline {
+        font-size: 1.8rem;
+    }
+
+    .hero-description {
+        font-size: 0.95rem;
+        line-height: 1.6;
+    }
+
+    /* Widgets: 2 columns on mobile */
+    .hero-widgets {
+        grid-template-columns: 1fr 1fr;
+        gap: 12px;
+        margin-top: 0;
+    }
+
+    .glass-card {
+        padding: 14px;
+    }
+
+    .card-header {
+        font-size: 0.7rem;
+    }
+
+    .card-title {
+        font-size: 0.95rem;
+    }
+
+    .card-sub {
+        font-size: 0.75rem;
+    }
+
+    .widget-icon {
+        font-size: 0.95rem;
+    }
+
+    /* Music card specific */
+    .music-card .album-art {
+        width: 45px;
+        height: 45px;
+    }
+
+    .music-card .song-title {
+        font-size: 0.85rem;
+    }
+
+    .music-card .artist-name {
+        font-size: 0.75rem;
+    }
+
+    .spotify-link {
+        font-size: 0.7rem;
+    }
+}
+
+/* Small mobile */
+@media (max-width: 480px) {
+    .hero-container {
+        padding: 70px 16px 30px;
+    }
+
+    .hero-headline {
+        font-size: 2rem;
+    }
+
+    .hero-subheadline {
+        font-size: 1.5rem;
+    }
+
+    .hero-description {
+        font-size: 0.9rem;
+    }
+
+    .hero-eyebrow {
+        font-size: 0.85rem;
+    }
+
+    .glass-card {
+        padding: 12px;
+    }
+
+    .card-header {
+        font-size: 0.65rem;
+    }
+
+    .card-title {
+        font-size: 0.85rem;
+    }
+
+    .card-sub {
+        font-size: 0.7rem;
+    }
 }
 
 .album-art {
