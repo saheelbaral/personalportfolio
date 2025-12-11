@@ -243,11 +243,31 @@ body.light-theme .contact-dropdown {
     font-size: 1.1rem;
   }
 
-  /* Simplify dropdown on mobile */
+  /* Position dropdown on right side on mobile */
+  /* Full width dropdown on mobile for better visibility */
   .contact-dropdown {
-    right: 0;
-    left: auto;
-    min-width: 200px;
+    position: fixed;
+    top: 5rem;
+    left: 1rem;
+    right: 1rem;
+    width: auto;
+    /* Span nicely */
+    transform: none;
+    max-width: none;
+    min-width: 0;
+    padding: 1rem;
+    background: rgba(30, 30, 30, 0.98);
+    /* More opaque */
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+  }
+
+  /* Ensure text wraps if needed and is visible */
+  .contact-dropdown-item {
+    font-size: 0.95rem;
+    padding: 0.8rem 1rem;
+    white-space: normal;
+    word-break: break-word;
   }
 
   .dropdown-item {
