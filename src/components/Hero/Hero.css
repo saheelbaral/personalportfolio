@@ -34,14 +34,46 @@
         color: rgba(0, 0, 0, 0.5);
     }
 
-    /* Background properties */
-    background-size: 110%;
-    background-position: center 35%;
-    background-repeat: no-repeat;
-    image-rendering: -webkit-optimize-contrast;
-    image-rendering: crisp-edges;
+    /* Background properties moved to .hero-bg-main */
     transform: translateZ(0);
     backface-visibility: hidden;
+}
+
+/* Sharp Main Background Image */
+.hero-bg-main {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: 95%;
+    background-position: center 35%;
+    background-repeat: no-repeat;
+    z-index: 0;
+    image-rendering: -webkit-optimize-contrast;
+    image-rendering: crisp-edges;
+    transition: background-image 0.5s ease;
+}
+
+/* Ambient Blur Layer for Light Theme */
+.hero-bg-blur {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    /* Strong dreamy Apple-style blur */
+    filter: blur(60px) saturate(2.0) brightness(1.2);
+    z-index: -1;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+    transform: scale(1.2);
+}
+
+body.light-theme .hero-bg-blur {
+    opacity: 1;
 }
 
 /* Background Vignette / Overlay for Readability on Right */
@@ -278,12 +310,19 @@ body.light-theme .card-sub {
         min-height: 100vh;
         padding: 0 20px 40px;
         gap: 20px;
+    }
 
+    .hero-bg-main {
         /* Center the face and zoom out slightly */
         background-size: auto 85%;
         /* Zoom out to 85% height to show more of the image */
         background-position: 45% 0%;
-        /* Shift right (55% instead of center/50%), position face in upper area */
+        /* User preferred alignment */
+    }
+
+    /* Hide blur layer on mobile for performance and cleaner look */
+    .hero-bg-blur {
+        display: none;
     }
 
     /* Adjust overlay for mobile - darker at bottom where content is */

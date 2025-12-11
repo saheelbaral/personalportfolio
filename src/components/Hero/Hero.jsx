@@ -1,7 +1,9 @@
+
 import React, { useState, useEffect } from 'react';
 import './Hero.css';
 import heroBg from '../../assets/hero-bg-new.png';
 import heroBgLight from '../../assets/hero-bg-light-new.jpg';
+import lightModeBgLayer from '../../assets/light-mode-bg-layer.jpg';
 import WeatherWidget from '../WeatherWidget/WeatherWidget';
 import { useTheme } from '../../context/ThemeContext';
 import { FiClock, FiLayers, FiMusic } from 'react-icons/fi';
@@ -41,12 +43,16 @@ const Hero = () => {
     }, []);
 
     return (
-        <div
-            className="hero-container"
-            style={{
-                backgroundImage: `url(${isDarkMode ? heroBg : heroBgLight})`
-            }}
-        >
+        <div className="hero-container">
+            {/* Background Layers */}
+            <div
+                className="hero-bg-blur"
+                style={{ backgroundImage: `url(${lightModeBgLayer})` }}
+            />
+            <div
+                className="hero-bg-main"
+                style={{ backgroundImage: `url(${isDarkMode ? heroBg : heroBgLight})` }}
+            />
             {/* Left Column: Text */}
             <div className="hero-content">
                 <div className="hero-eyebrow">I'm Saheel</div>

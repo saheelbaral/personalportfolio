@@ -72,7 +72,7 @@ body.light-theme .about-container {
 /* Responsive font scaling */
 @media (min-width: 1024px) {
     .about-headline-large {
-        font-size: 4.5rem;
+        font-size: 3rem;
     }
 }
 
@@ -108,33 +108,6 @@ body.light-theme .about-subtext {
     color: rgba(0, 0, 0, 0.6);
 }
 
-.about-cta-button {
-    background: transparent;
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    color: #fff;
-    padding: 0.8rem 1.6rem;
-    border-radius: 50px;
-    font-family: 'Outfit', sans-serif;
-    font-size: 0.9rem;
-    cursor: pointer;
-    transition: all 0.3s ease;
-}
-
-body.light-theme .about-cta-button {
-    border-color: rgba(0, 0, 0, 0.2);
-    color: #1a1a1a;
-}
-
-.about-cta-button:hover {
-    background: rgba(255, 255, 255, 0.1);
-    transform: translateY(-2px);
-    border-color: #fff;
-}
-
-body.light-theme .about-cta-button:hover {
-    background: rgba(0, 0, 0, 0.05);
-    border-color: #000;
-}
 
 /* Skills Grid */
 .about-skills {
