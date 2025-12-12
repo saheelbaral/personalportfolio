@@ -313,9 +313,9 @@ body.light-theme .card-sub {
 
     .hero-bg-main {
         /* Center the face and zoom out slightly */
-        background-size: auto 85%;
+        background-size: auto 50%;
         /* Zoom out to 85% height to show more of the image */
-        background-position: 45% 0%;
+        background-position: 45% 10%;
         /* User preferred alignment */
     }
 
