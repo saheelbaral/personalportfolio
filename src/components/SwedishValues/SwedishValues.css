@@ -1,352 +1,222 @@
-/* Philosophy Section - Flowing Timeline Design */
+/* Philosophy Section - Modern Grid Design */
 .philosophy-section {
-    padding: 8rem 5rem;
+    padding: 10rem 2rem;
     max-width: 1200px;
     margin: 0 auto;
     font-family: 'Inter', sans-serif;
     position: relative;
+    /* Background gradient to match the image's dark, moody vibe */
+    background: radial-gradient(circle at top right, rgba(46, 16, 101, 0.15) 0%, transparent 40%),
+        radial-gradient(circle at bottom left, rgba(88, 28, 135, 0.1) 0%, transparent 50%);
 }
 
 /* Header */
 .philosophy-header {
     text-align: center;
-    margin-bottom: 6rem;
+    margin-bottom: 5rem;
 }
 
 .philosophy-label {
-    font-size: 0.75rem;
+    font-family: 'Outfit', sans-serif;
+    font-size: 0.8rem;
     text-transform: uppercase;
-    letter-spacing: 0.3em;
-    opacity: 0.5;
-    font-weight: 600;
+    letter-spacing: 0.4em;
+    opacity: 0.7;
+    font-weight: 500;
     display: block;
-    margin-bottom: 1rem;
+    margin-bottom: 1.5rem;
+    color: #a5b4fc;
+    /* Indigo tint */
 }
 
 .philosophy-title {
     font-family: 'Outfit', sans-serif;
-    font-size: 4rem;
-    font-weight: 300;
-    letter-spacing: -0.03em;
+    font-size: 4.5rem;
+    font-weight: 400;
+    letter-spacing: -0.02em;
     margin: 0;
-}
-
-body.dark-theme .philosophy-title {
-    color: #f1f5f9;
+    color: #ffffff;
 }
 
 body.light-theme .philosophy-title {
     color: #0f172a;
 }
 
-/* Flowing Timeline */
-.principles-flow {
-    position: relative;
-    padding: 2rem 0;
-}
-
-/* Central flowing line */
-.principles-flow::before {
-    content: '';
-    position: absolute;
-    left: 50%;
-    top: 0;
-    bottom: 0;
-    width: 2px;
-    background: linear-gradient(180deg,
-            transparent 0%,
-            rgba(99, 102, 241, 0.3) 10%,
-            rgba(99, 102, 241, 0.3) 90%,
-            transparent 100%);
-    transform: translateX(-50%);
-}
-
-body.light-theme .principles-flow::before {
-    background: linear-gradient(180deg,
-            transparent 0%,
-            rgba(0, 106, 167, 0.2) 10%,
-            rgba(0, 106, 167, 0.2) 90%,
-            transparent 100%);
-}
-
-/* Principle Items */
-.principle-item {
+/* Grid Layout */
+.principles-grid {
     display: grid;
-    grid-template-columns: 1fr auto 1fr;
-    gap: 3rem;
-    margin-bottom: 4rem;
-    align-items: center;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
     position: relative;
+    z-index: 1;
 }
 
-/* Left-aligned items */
-.principle-item.left .principle-content {
-    grid-column: 1;
-    text-align: right;
-    padding-right: 2rem;
+/* Card Styling */
+.principle-card {
+    background: rgba(255, 255, 255, 0.03);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 20px;
+    padding: 3rem;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    display: flex;
+    flex-direction: column;
 }
 
-.principle-item.left .principle-number {
-    grid-column: 2;
+body.light-theme .principle-card {
+    background: rgba(255, 255, 255, 0.6);
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
 }
 
-.principle-item.left .principle-connector {
-    grid-column: 3;
+.principle-card:hover {
+    transform: translateY(-8px);
+    background: rgba(255, 255, 255, 0.06);
+    border-color: rgba(165, 180, 252, 0.2);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
 }
 
-/* Right-aligned items */
-.principle-item.right .principle-content {
-    grid-column: 3;
-    text-align: left;
-    padding-left: 2rem;
+body.light-theme .principle-card:hover {
+    background: rgba(255, 255, 255, 0.9);
+    border-color: rgba(99, 102, 241, 0.2);
 }
 
-.principle-item.right .principle-number {
-    grid-column: 2;
-}
-
-.principle-item.right .principle-connector {
-    grid-column: 1;
-}
-
-/* Number Circle */
-.principle-number {
-    width: 60px;
-    height: 60px;
-    border-radius: 50%;
+/* Icon Styling */
+.principle-icon {
+    width: 48px;
+    height: 48px;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-family: 'Outfit', sans-serif;
-    font-size: 1.2rem;
-    font-weight: 700;
-    position: relative;
-    z-index: 2;
-    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    margin-bottom: 1.5rem;
+    opacity: 0.4;
+    transition: all 0.3s ease;
 }
 
-body.dark-theme .principle-number {
-    background: rgba(255, 255, 255, 0.05);
-    border: 2px solid rgba(255, 255, 255, 0.1);
-    color: #f1f5f9;
+.principle-icon svg {
+    width: 28px;
+    height: 28px;
+    stroke-width: 1.5px;
+    color: #a5b4fc;
 }
 
-body.light-theme .principle-number {
-    background: rgba(255, 255, 255, 0.8);
-    border: 2px solid rgba(0, 106, 167, 0.2);
-    color: #0f172a;
+body.light-theme .principle-icon svg {
+    color: #6366f1;
 }
 
-.principle-item:hover .principle-number {
-    transform: scale(1.15);
-    border-color: rgba(99, 102, 241, 0.5);
-}
-
-body.light-theme .principle-item:hover .principle-number {
-    border-color: rgba(0, 106, 167, 0.5);
-}
-
-/* Content */
-.principle-content {
-    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+.principle-card:hover .principle-icon {
+    opacity: 0.7;
+    transform: scale(1.1);
 }
 
 .principle-title {
     font-family: 'Outfit', sans-serif;
-    font-size: 1.8rem;
+    font-size: 2rem;
     font-weight: 600;
-    margin-bottom: 1rem;
+    margin-bottom: 1.5rem;
     letter-spacing: -0.01em;
-}
-
-body.dark-theme .principle-title {
-    color: #f1f5f9;
+    color: #ffffff;
 }
 
 body.light-theme .principle-title {
-    color: #0f172a;
+    color: #1e293b;
 }
 
 .principle-thought {
-    font-size: 1.05rem;
-    line-height: 1.8;
-    opacity: 0.75;
+    font-size: 1.1rem;
+    line-height: 1.6;
+    opacity: 0.6;
     font-weight: 300;
-    max-width: 450px;
-}
-
-body.dark-theme .principle-thought {
-    color: rgba(255, 255, 255, 0.8);
+    margin: 0;
+    color: #cbd5e1;
 }
 
 body.light-theme .principle-thought {
-    color: rgba(0, 0, 0, 0.7);
-}
-
-.principle-item.left .principle-thought {
-    margin-left: auto;
-}
-
-.principle-item.right .principle-thought {
-    margin-right: auto;
-}
-
-/* Hover effect on content */
-.principle-item:hover .principle-content {
-    transform: translateY(-4px);
-}
-
-/* Connector (empty space for visual balance) */
-.principle-connector {
-    height: 1px;
+    color: #475569;
+    opacity: 0.9;
 }
 
 /* Footer */
 .philosophy-footer {
     text-align: center;
     margin-top: 6rem;
-    padding: 3rem 2rem;
-    border-radius: 24px;
-    max-width: 700px;
+    max-width: 900px;
     margin-left: auto;
     margin-right: auto;
 }
 
-body.dark-theme .philosophy-footer {
-    background: rgba(255, 255, 255, 0.02);
-    border: 1px solid rgba(255, 255, 255, 0.05);
-}
-
-body.light-theme .philosophy-footer {
-    background: rgba(255, 255, 255, 0.5);
-    border: 1px solid rgba(255, 255, 255, 0.8);
-}
-
 .footer-insight {
-    font-size: 1.15rem;
-    line-height: 1.7;
-    font-style: italic;
-    opacity: 0.8;
+    font-family: 'Outfit', sans-serif;
+    font-size: 3.5rem;
+    line-height: 1.2;
     font-weight: 300;
-    margin: 0;
-}
-
-body.dark-theme .footer-insight {
-    color: rgba(255, 255, 255, 0.8);
+    letter-spacing: -0.02em;
+    color: #ffffff;
+    opacity: 0.95;
 }
 
 body.light-theme .footer-insight {
-    color: rgba(0, 0, 0, 0.7);
+    color: #0f172a;
 }
+
 
 /* Responsive Design */
 @media (max-width: 1024px) {
     .philosophy-title {
-        font-size: 3rem;
+        font-size: 3.5rem;
     }
 
-    .principle-title {
-        font-size: 1.5rem;
+    .footer-insight {
+        font-size: 2.5rem;
     }
 
-    .principle-thought {
-        font-size: 1rem;
+    .principle-card {
+        padding: 2rem;
     }
 }
 
 @media (max-width: 768px) {
     .philosophy-section {
-        padding: 4rem 1.5rem;
+        padding: 6rem 1.5rem;
     }
 
     .philosophy-title {
-        font-size: 2.5rem;
+        font-size: 2.8rem;
     }
 
-    /* Stack timeline vertically on mobile */
-    .principles-flow::before {
-        left: 30px;
+    .principles-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
     }
 
-    .principle-item {
-        grid-template-columns: auto 1fr;
-        gap: 2rem;
-        margin-bottom: 3rem;
-    }
-
-    .principle-item.left .principle-content,
-    .principle-item.right .principle-content {
-        grid-column: 2;
-        text-align: left;
-        padding-left: 0;
-        padding-right: 0;
-    }
-
-    .principle-item.left .principle-number,
-    .principle-item.right .principle-number {
-        grid-column: 1;
-    }
-
-    .principle-item.left .principle-connector,
-    .principle-item.right .principle-connector {
-        display: none;
-    }
-
-    .principle-number {
-        width: 50px;
-        height: 50px;
-        font-size: 1rem;
+    .principle-card {
+        padding: 2rem;
     }
 
     .principle-title {
-        font-size: 1.3rem;
-    }
-
-    .principle-thought {
-        font-size: 0.95rem;
-        max-width: 100%;
-    }
-
-    .principle-item.left .principle-thought,
-    .principle-item.right .principle-thought {
-        margin-left: 0;
-        margin-right: 0;
-    }
-
-    .philosophy-footer {
-        margin-top: 4rem;
-        padding: 2rem 1.5rem;
+        font-size: 1.6rem;
     }
 
     .footer-insight {
-        font-size: 1rem;
+        font-size: 2rem;
     }
 }
 
 @media (max-width: 480px) {
     .philosophy-section {
-        padding: 3rem 1rem;
+        padding: 4rem 1rem;
     }
 
     .philosophy-title {
-        font-size: 2rem;
-    }
-
-    .principle-item {
-        gap: 1.5rem;
-    }
-
-    .principle-number {
-        width: 45px;
-        height: 45px;
-        font-size: 0.9rem;
+        font-size: 2.2rem;
     }
 
     .principle-title {
-        font-size: 1.2rem;
+        font-size: 1.4rem;
     }
 
-    .principle-thought {
-        font-size: 0.9rem;
+    .footer-insight {
+        font-size: 1.6rem;
     }
 }

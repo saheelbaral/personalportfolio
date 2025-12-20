@@ -1,7 +1,17 @@
 import React from 'react';
 import './SwedishValues.css';
+import { FiActivity, FiCoffee, FiFeather, FiUsers, FiCircle, FiHeart } from 'react-icons/fi';
 
 const SwedishValues = () => {
+    const iconMap = {
+        "Balance Over Extremes": FiActivity,
+        "Pause to Progress": FiCoffee,
+        "Nature as Teacher": FiFeather,
+        "Everyone's Voice Matters": FiUsers,
+        "Simplicity is Sophistication": FiCircle,
+        "Comfort Fuels Creativity": FiHeart
+    };
+
     const principles = [
         {
             number: "01",
@@ -46,24 +56,25 @@ const SwedishValues = () => {
             {/* Minimal Header */}
             <div className="philosophy-header">
                 <span className="philosophy-label">How I Work & Live</span>
-                <h2 className="philosophy-title">Guiding Principles</h2>
+                <h2 className="philosophy-title">Saheel's Guiding Principles</h2>
             </div>
 
-            {/* Flowing Timeline Layout */}
-            <div className="principles-flow">
-                {principles.map((principle, index) => (
-                    <div
-                        key={index}
-                        className={`principle-item ${index % 2 === 0 ? 'left' : 'right'}`}
-                    >
-                        <div className="principle-number">{principle.number}</div>
-                        <div className="principle-content">
-                            <h3 className="principle-title">{principle.title}</h3>
-                            <p className="principle-thought">{principle.thought}</p>
+            {/* Principles Grid Layout */}
+            <div className="principles-grid">
+                {principles.map((principle, index) => {
+                    const IconComponent = iconMap[principle.title];
+                    return (
+                        <div key={index} className="principle-card">
+                            <div className="principle-icon">
+                                <IconComponent />
+                            </div>
+                            <div className="principle-content">
+                                <h3 className="principle-title">{principle.title}</h3>
+                                <p className="principle-thought">{principle.thought}</p>
+                            </div>
                         </div>
-                        <div className="principle-connector"></div>
-                    </div>
-                ))}
+                    );
+                })}
             </div>
 
             {/* Subtle Footer Quote */}
