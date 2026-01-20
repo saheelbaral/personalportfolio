@@ -26,10 +26,10 @@ const Footer = () => {
                     <div className="footer-links">
                         <div className="footer-link">
                             <FiMail className="footer-icon" />
-                            <span>baralsaheel@gmail.com</span>
+                            <span>saheelbaral@gmail.com</span>
                             <button
                                 className="footer-copy-button"
-                                onClick={() => copyToClipboard('baralsaheel@gmail.com', 'email')}
+                                onClick={() => copyToClipboard('saheelbaral@gmail.com', 'email')}
                                 aria-label="Copy email"
                             >
                                 {copiedItem === 'email' ? <FiCheck /> : <FiCopy />}
