@@ -61,7 +61,7 @@ const Hero = () => {
                     <span className="highlight-text">marketing specialist.</span>
                 </h1>
                 <p className="hero-description">
-                    I'm adept in using digital tools for digital marketing across various industries.
+                    I'm adept in Aquisition Marketing, Funnel Design (Sales), and Automation.
                 </p>
             </div>
 
