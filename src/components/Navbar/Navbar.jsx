@@ -51,10 +51,10 @@ const Navbar = () => {
             <div className="contact-dropdown">
               <div className="contact-dropdown-item">
                 <FiMail className="contact-item-icon" />
-                <span>baralsaheel@gmail.com</span>
+                <span>saheelbaral@gmail.com</span>
                 <button
                   className="copy-button"
-                  onClick={() => copyToClipboard('baralsaheel@gmail.com', 'email')}
+                  onClick={() => copyToClipboard('saheelbaral@gmail.com', 'email')}
                   aria-label="Copy email"
                 >
                   {copiedItem === 'email' ? <FiCheck /> : <FiCopy />}
