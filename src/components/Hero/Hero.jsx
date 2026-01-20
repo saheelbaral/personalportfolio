@@ -57,8 +57,8 @@ const Hero = () => {
             <div className="hero-content">
                 <div className="hero-eyebrow">I'm Saheel</div>
                 <h1 className="hero-headline">
-                    Digital marketer <br />
-                    <span className="highlight-text">and brand strategist.</span>
+                    Full-Stack Growth <br />
+                    <span className="highlight-text">marketing specialist.</span>
                 </h1>
                 <p className="hero-description">
                     I'm adept in using digital tools for digital marketing across various industries.
