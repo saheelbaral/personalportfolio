@@ -93,16 +93,25 @@ const Hero = () => {
                 <div className="status-divider" />
 
                 {/* Spotify */}
-                <div className="status-segment">
+                <div className="status-segment status-segment--spotify">
                     <SiSpotify className="status-icon status-icon-spotify" />
                     <span className="status-label">{spotifyData.isPlaying ? 'Listening' : 'Last Played'}</span>
-                    <span className="status-value">
-                        {spotifyData.songUrl ? (
-                            <a href={spotifyData.songUrl} target="_blank" rel="noopener noreferrer" className="status-spotify-link">
-                                {spotifyData.title}
-                            </a>
-                        ) : spotifyData.title}
-                    </span>
+                    <div className="status-details-stack">
+                        <span className="status-value">
+                            {spotifyData.songUrl ? (
+                                <a href={spotifyData.songUrl} target="_blank" rel="noopener noreferrer" className="status-spotify-link">
+                                    {spotifyData.title}
+                                </a>
+                            ) : (
+                                spotifyData.title
+                            )}
+                        </span>
+                        {spotifyData.artist && (
+                            <div className="status-secondary">
+                                {spotifyData.artist}
+                            </div>
+                        )}
+                    </div>
                 </div>
             </div>
         </div>

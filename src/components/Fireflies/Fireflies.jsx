@@ -19,13 +19,13 @@ const Fireflies = () => {
         return {
             x: Math.random() * width,
             y: Math.random() * height,
-            size: 1 + Math.random() * 2.5, // 1px to 3.5px
-            speedX: (Math.random() - 0.5) * 0.3, // slow drift
-            speedY: (Math.random() - 0.5) * 0.3,
-            opacity: 0.2 + Math.random() * 0.6,
-            pulseSpeed: 0.005 + Math.random() * 0.015, // twinkle speed
-            pulseOffset: Math.random() * Math.PI * 2, // random phase
-            glowSize: 3 + Math.random() * 6, // glow radius
+            size: 0.5 + Math.random() * 1.5, // Reduced: 0.5px to 2px
+            speedX: (Math.random() - 0.5) * 0.15, // Reduced: slower drift
+            speedY: (Math.random() - 0.5) * 0.15,
+            opacity: 0.15 + Math.random() * 0.45, // Reduced: more subtle
+            pulseSpeed: 0.003 + Math.random() * 0.01, // Reduced: slower twinkle
+            pulseOffset: Math.random() * Math.PI * 2,
+            glowSize: 2 + Math.random() * 4, // Reduced: smaller glow
         };
     }, []);
 
@@ -35,13 +35,24 @@ const Fireflies = () => {
 
         const ctx = canvas.getContext('2d');
         let width, height;
+        let dpr = window.devicePixelRatio || 1;
 
         const resize = () => {
             const parent = canvas.parentElement;
             width = parent.offsetWidth;
             height = parent.offsetHeight;
-            canvas.width = width;
-            canvas.height = height;
+            dpr = window.devicePixelRatio || 1;
+
+            // Set display size
+            canvas.style.width = width + 'px';
+            canvas.style.height = height + 'px';
+
+            // Set actual size in memory (scaled for DPI)
+            canvas.width = width * dpr;
+            canvas.height = height * dpr;
+
+            // Scale all drawing operations by dpr
+            ctx.scale(dpr, dpr);
 
             // Reinitialize particles if needed
             if (particlesRef.current.length === 0) {
@@ -60,7 +71,7 @@ const Fireflies = () => {
             const dark = isDarkModeRef.current;
 
             particlesRef.current.forEach((p) => {
-                // Update position — slow organic drift
+                // Update position
                 p.x += p.speedX;
                 p.y += p.speedY;
 
@@ -70,9 +81,9 @@ const Fireflies = () => {
                 if (p.y < -10) p.y = height + 10;
                 if (p.y > height + 10) p.y = -10;
 
-                // Pulse / twinkle
+                // Pulse / twinkle - dampened amplitude
                 const pulse = Math.sin(time * p.pulseSpeed + p.pulseOffset);
-                const currentOpacity = p.opacity * (0.5 + 0.5 * pulse);
+                const currentOpacity = p.opacity * (0.7 + 0.3 * pulse);
 
                 // Color based on theme
                 if (dark) {
@@ -84,7 +95,7 @@ const Fireflies = () => {
                     // Glow
                     const gradient = ctx.createRadialGradient(p.x, p.y, 0, p.x, p.y, p.glowSize);
                     gradient.addColorStop(0, `rgba(${r}, ${g}, ${b}, ${currentOpacity})`);
-                    gradient.addColorStop(0.4, `rgba(${r}, ${g}, ${b}, ${currentOpacity * 0.4})`);
+                    gradient.addColorStop(0.4, `rgba(${r}, ${g}, ${b}, ${currentOpacity * 0.3})`);
                     gradient.addColorStop(1, `rgba(${r}, ${g}, ${b}, 0)`);
 
                     ctx.beginPath();
@@ -103,18 +114,18 @@ const Fireflies = () => {
                     const g = 102;
                     const b = 241;
 
-                    const gradient = ctx.createRadialGradient(p.x, p.y, 0, p.x, p.y, p.glowSize * 0.7);
-                    gradient.addColorStop(0, `rgba(${r}, ${g}, ${b}, ${currentOpacity * 0.35})`);
+                    const gradient = ctx.createRadialGradient(p.x, p.y, 0, p.x, p.y, p.glowSize * 0.6);
+                    gradient.addColorStop(0, `rgba(${r}, ${g}, ${b}, ${currentOpacity * 0.25})`);
                     gradient.addColorStop(1, `rgba(${r}, ${g}, ${b}, 0)`);
 
                     ctx.beginPath();
-                    ctx.arc(p.x, p.y, p.glowSize * 0.7, 0, Math.PI * 2);
+                    ctx.arc(p.x, p.y, p.glowSize * 0.6, 0, Math.PI * 2);
                     ctx.fillStyle = gradient;
                     ctx.fill();
 
                     ctx.beginPath();
-                    ctx.arc(p.x, p.y, p.size * 0.8, 0, Math.PI * 2);
-                    ctx.fillStyle = `rgba(${r}, ${g}, ${b}, ${currentOpacity * 0.35})`;
+                    ctx.arc(p.x, p.y, p.size * 0.7, 0, Math.PI * 2);
+                    ctx.fillStyle = `rgba(${r}, ${g}, ${b}, ${currentOpacity * 0.25})`;
                     ctx.fill();
                 }
             });

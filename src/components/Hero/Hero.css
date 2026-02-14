@@ -255,6 +255,39 @@ body.light-theme .status-value {
     color: rgba(0, 0, 0, 0.75);
 }
 
+/* Stacked details for Spotify (Song above Artist) */
+.status-segment--spotify {
+    align-items: center;
+    /* Center icon/label with the stack */
+    padding-top: 0.4rem;
+    padding-bottom: 0.4rem;
+}
+
+.status-details-stack {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    line-height: 1.2;
+}
+
+.status-primary {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.status-secondary {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.7rem;
+    color: rgba(255, 255, 255, 0.45);
+    font-weight: 400;
+    margin-top: 1px;
+}
+
+body.light-theme .status-secondary {
+    color: rgba(0, 0, 0, 0.45);
+}
+
 /* Divider between segments */
 .status-divider {
     width: 1px;
