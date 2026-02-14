@@ -48,14 +48,117 @@ body.light-theme .about-container {
     letter-spacing: 0.25em;
     margin-bottom: 1.5rem;
     display: inline-block;
-    color: #ef4444;
-    /* High contrast red like reference */
+    color: #a5b4fc;
 }
 
-/* Specific red brand color from reference */
-.highlight-red {
-    color: #ef4444;
+body.light-theme .about-eyebrow {
+    color: #6366f1;
+}
+
+/* ── Specialization Pills ── */
+.specialization-pills {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.75rem;
+    margin-top: 1.5rem;
+}
+
+.spec-pill {
+    font-family: 'Outfit', sans-serif;
+    font-size: 0.95rem;
+    font-weight: 500;
+    letter-spacing: 0.01em;
+    padding: 0.55rem 1.2rem;
+    border-radius: 100px;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    cursor: default;
+    transition: all 0.3s ease;
+    border: 1px solid transparent;
+}
+
+.spec-pill:hover {
+    transform: translateY(-1px);
+}
+
+.spec-pill-icon {
+    font-size: 0.8rem;
+    flex-shrink: 0;
+}
+
+/* Blue — Digital Marketing */
+.spec-pill--blue {
+    background: rgba(165, 180, 252, 0.12);
+    color: #a5b4fc;
+    border-color: rgba(165, 180, 252, 0.15);
+}
+
+.spec-pill--blue:hover {
+    background: rgba(165, 180, 252, 0.2);
+}
+
+body.light-theme .spec-pill--blue {
+    background: rgba(99, 102, 241, 0.08);
+    color: #6366f1;
+    border-color: rgba(99, 102, 241, 0.12);
+}
+
+body.light-theme .spec-pill--blue:hover {
+    background: rgba(99, 102, 241, 0.14);
+}
+
+/* Purple — Sales Funnel Design */
+.spec-pill--purple {
+    background: rgba(192, 132, 252, 0.12);
+    color: #c084fc;
+    border-color: rgba(192, 132, 252, 0.15);
+}
+
+.spec-pill--purple:hover {
+    background: rgba(192, 132, 252, 0.2);
+}
+
+body.light-theme .spec-pill--purple {
+    background: rgba(139, 92, 246, 0.08);
+    color: #7c3aed;
+    border-color: rgba(139, 92, 246, 0.12);
+}
+
+body.light-theme .spec-pill--purple:hover {
+    background: rgba(139, 92, 246, 0.14);
+}
+
+/* Green — CRM Automation */
+.spec-pill--green {
+    background: rgba(52, 211, 153, 0.12);
+    color: #34d399;
+    border-color: rgba(52, 211, 153, 0.15);
+}
+
+.spec-pill--green:hover {
+    background: rgba(52, 211, 153, 0.2);
+}
+
+body.light-theme .spec-pill--green {
+    background: rgba(16, 185, 129, 0.08);
+    color: #059669;
+    border-color: rgba(16, 185, 129, 0.12);
+}
+
+body.light-theme .spec-pill--green:hover {
+    background: rgba(16, 185, 129, 0.14);
+}
+
+/* Headline accent text */
+.headline-accent {
+    color: #a5b4fc;
     font-weight: 700;
+}
+
+body.light-theme .headline-accent {
+    color: #6366f1;
 }
 
 .about-headline-large {
@@ -285,6 +388,11 @@ body.dark-theme .skill-icon-real[style*="#000000"] {
     .about-headline-large {
         font-size: 3rem;
     }
+
+    .spec-pill {
+        font-size: 0.9rem;
+        padding: 0.45rem 1rem;
+    }
 }
 
 /* Mobile */
@@ -323,6 +431,15 @@ body.dark-theme .skill-icon-real[style*="#000000"] {
     .skill-card {
         padding: 1rem 1.2rem;
     }
+
+    .specialization-pills {
+        gap: 0.7rem;
+    }
+
+    .spec-pill {
+        font-size: 0.85rem;
+        padding: 0.4rem 0.9rem;
+    }
 }
 
 /* Small mobile */
@@ -346,5 +463,10 @@ body.dark-theme .skill-icon-real[style*="#000000"] {
 
     .skill-card {
         padding: 0.9rem 1rem;
+    }
+
+    .spec-pill {
+        font-size: 0.9rem;
+        padding: 0.4rem 0.9rem;
     }
 }

@@ -7,7 +7,7 @@ import cloudyBg from '../../assets/weather/cloudy.png';
 import rainyBg from '../../assets/weather/rainy.png';
 import snowyBg from '../../assets/weather/snowy.png';
 
-const WeatherWidget = () => {
+const WeatherWidget = ({ compact = false }) => {
     const [weather, setWeather] = useState(null);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(false);
@@ -38,29 +38,67 @@ const WeatherWidget = () => {
         fetchWeather();
     }, []);
 
+    const getWeatherLabel = (code) => {
+        const labels = {
+            0: "Clear",
+            1: "Mainly Clear", 2: "Partly Cloudy", 3: "Overcast",
+            45: "Fog", 48: "Rime Fog",
+            51: "Drizzle", 53: "Drizzle", 55: "Drizzle",
+            61: "Rain", 63: "Rain", 65: "Heavy Rain",
+            71: "Snow", 73: "Snow", 75: "Heavy Snow",
+            95: "Storm",
+        };
+        return labels[code] || "Weather";
+    };
+
+    /* ── Compact mode: inline status-bar element ── */
+    if (compact) {
+        if (loading) {
+            return (
+                <div className="weather-compact">
+                    <FiMapPin className="status-icon" />
+                    <span className="status-label">Weather</span>
+                    <span className="status-value">Loading…</span>
+                </div>
+            );
+        }
+
+        if (error) {
+            return (
+                <div className="weather-compact">
+                    <FiMapPin className="status-icon" />
+                    <span className="status-label">Weather</span>
+                    <span className="status-value">Göteborg · --°</span>
+                </div>
+            );
+        }
+
+        const temp = Math.round(weather.temperature_2m);
+        return (
+            <div className="weather-compact">
+                <FiMapPin className="status-icon" />
+                <span className="status-label">Weather</span>
+                <span className="status-value">Göteborg · {temp}°</span>
+            </div>
+        );
+    }
+
+    /* ── Full card mode (unchanged) ── */
+
     // Illustration Helper
     const WeatherIllustration = ({ code, isDay }) => {
-        // Simple mapping
-        // 0: Clear
-        // 1-3: Cloud
-        // 45,48: Fog (Cloud)
-        // 51+, 61+, 80+: Rain
-        // 71+: Snow
-        // 95: Storm
-
         const props = { className: "weather-illustration", width: "64", height: "64", viewBox: "0 0 64 64" };
 
-        // Sun / Clear
         if (code === 0) {
             if (!isDay) return (
                 <svg {...props}>
-                    <circle cx="32" cy="32" r="14" fill="#F4F6F0" opacity="0.9" /> {/* Moon */}
+                    <circle cx="32" cy="32" r="14" fill="#F4F6F0" opacity="0.9" />
                     <circle cx="42" cy="24" r="4" fill="#E6E8D2" opacity="0.6" />
                 </svg>
             );
             return (
                 <svg {...props}>
-                    <circle cx="32" cy="32" r="16" fill="#fbbf24" /> {/* Sun core */}
+                    <circle cx="32" cy="32" r="16" fill="#fbbf24" />
                     <g stroke="#fbbf24" strokeWidth="4" strokeLinecap="round">
                         <line x1="32" y1="6" x2="32" y2="10" />
                         <line x1="32" y1="54" x2="32" y2="58" />
@@ -75,7 +113,6 @@ const WeatherWidget = () => {
             );
         }
 
-        // Clouds / Fog
         if ((code >= 1 && code <= 3) || (code >= 45 && code <= 48)) {
             return (
                 <svg {...props}>
@@ -91,14 +128,11 @@ const WeatherWidget = () => {
             );
         }
 
-        // Rain
         if ((code >= 51 && code <= 67) || (code >= 80 && code <= 82)) {
             return (
                 <svg {...props}>
-                    {/* Simplified cloud */}
                     <path d="M22 26C22 21.5817 25.5817 18 30 18C30.481 18 30.9504 18.0519 31.4052 18.1506C32.3161 14.7602 35.3968 12.25 39.05 12.25C43.4411 12.25 47 15.8089 47 20.2C47 20.7818 46.9371 21.3473 46.8183 21.8885C46.9378 21.8806 47.0581 21.875 47.1786 21.875C49.6639 21.875 51.6786 23.8897 51.6786 26.375C51.6786 28.8603 49.6639 30.875 47.1786 30.875H22C19.2386 30.875 17 28.6364 17 25.875C17 23.1136 19.2386 20.875 22 20.875V26Z"
                         fill="#E2E8F0" transform="scale(1.1)" />
-                    {/* Rain drops */}
                     <line x1="28" y1="38" x2="26" y2="44" stroke="#60a5fa" strokeWidth="2" strokeLinecap="round" />
                     <line x1="36" y1="38" x2="34" y2="44" stroke="#60a5fa" strokeWidth="2" strokeLinecap="round" />
                     <line x1="44" y1="38" x2="42" y2="44" stroke="#60a5fa" strokeWidth="2" strokeLinecap="round" />
@@ -106,7 +140,6 @@ const WeatherWidget = () => {
             );
         }
 
-        // Snow
         if (code >= 71 && code <= 77) {
             return (
                 <svg {...props}>
@@ -119,7 +152,6 @@ const WeatherWidget = () => {
             );
         }
 
-        // Storm
         if (code >= 95) {
             return (
                 <svg {...props}>
@@ -131,19 +163,6 @@ const WeatherWidget = () => {
         }
 
         return null;
-    };
-
-    const getWeatherLabel = (code) => {
-        const labels = {
-            0: "Clear",
-            1: "Mainly Clear", 2: "Partly Cloudy", 3: "Overcast",
-            45: "Fog", 48: "Rime Fog",
-            51: "Drizzle", 53: "Drizzle", 55: "Drizzle",
-            61: "Rain", 63: "Rain", 65: "Heavy Rain",
-            71: "Snow", 73: "Snow", 75: "Heavy Snow",
-            95: "Storm",
-        };
-        return labels[code] || "Weather";
     };
 
     if (loading) return (

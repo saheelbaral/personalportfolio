@@ -1,12 +1,12 @@
 
 import React, { useState, useEffect } from 'react';
 import './Hero.css';
-import heroBg from '../../assets/hero-bg-new.png';
-import heroBgLight from '../../assets/hero-bg-light-new.jpg';
-import lightModeBgLayer from '../../assets/light-mode-bg-layer.jpg';
+import profileImg from '../../assets/profile.png';
+import Fireflies from '../Fireflies/Fireflies';
 import WeatherWidget from '../WeatherWidget/WeatherWidget';
 import { useTheme } from '../../context/ThemeContext';
-import { FiClock, FiLayers, FiMusic } from 'react-icons/fi';
+import { FiClock, FiLayers } from 'react-icons/fi';
+import { SiSpotify } from 'react-icons/si';
 import { getNowPlaying } from '../../services/spotifyService';
 
 const Hero = () => {
@@ -36,25 +36,25 @@ const Hero = () => {
             setSpotifyData(data);
         };
 
-        fetchSpotify(); // Initial fetch
-        const spotifyInterval = setInterval(fetchSpotify, 30000); // Refresh every 30 seconds
+        fetchSpotify();
+        const spotifyInterval = setInterval(fetchSpotify, 30000);
 
         return () => clearInterval(spotifyInterval);
     }, []);
 
     return (
         <div className="hero-container">
-            {/* Background Layers */}
-            <div
-                className="hero-bg-blur"
-                style={{ backgroundImage: `url(${lightModeBgLayer})` }}
-            />
-            <div
-                className="hero-bg-main"
-                style={{ backgroundImage: `url(${isDarkMode ? heroBg : heroBgLight})` }}
-            />
-            {/* Left Column: Text */}
-            <div className="hero-content">
+            {/* Firefly Particle Background */}
+            <Fireflies />
+
+            {/* Centered Content Block */}
+            <div className="hero-center">
+                {/* Circular Avatar */}
+                <div className="hero-avatar">
+                    <img src={profileImg} alt="Saheel Baral" />
+                </div>
+
+                {/* Text Content */}
                 <div className="hero-eyebrow">I'm Saheel</div>
                 <h1 className="hero-headline">
                     Full-Stack Growth <br />
@@ -65,57 +65,44 @@ const Hero = () => {
                 </p>
             </div>
 
-            {/* Center Column: Spacer (was Image) to keep grid structure or just empty div so spacing works */}
-            <div className="hero-spacer"></div>
-
-            {/* Right Column: Widgets */}
-            <div className="hero-widgets">
-                {/* Widget 1: Local Time (Compact) */}
-                <div className="glass-card compact-card">
-                    <div className="widget-icon-header">
-                        <FiClock className="widget-icon" />
-                        <span className="card-header-inline">LOCAL TIME</span>
-                    </div>
-                    <span className="card-value-inline">{currentTime}</span>
+            {/* Status Bar */}
+            <div className="hero-status-bar">
+                {/* Local Time */}
+                <div className="status-segment">
+                    <FiClock className="status-icon" />
+                    <span className="status-label">Local Time</span>
+                    <span className="status-value">{currentTime}</span>
                 </div>
 
-                {/* Widget 2: Location (Dynamic Weather) */}
-                <WeatherWidget />
+                <div className="status-divider" />
 
-                {/* Widget 3: Working On */}
-                <div className="glass-card">
-                    <div className="widget-icon-header">
-                        <FiLayers className="widget-icon" />
-                        <div className="card-header">Working On</div>
-                    </div>
-                    <div className="card-title">iCaptain Userdeck</div>
-                    <div className="card-sub">Building an interactive user manual to help new users get started quickly</div>
+                {/* Weather */}
+                <div className="status-segment">
+                    <WeatherWidget compact />
                 </div>
 
-                {/* Widget 4: Listening To */}
-                <div className="glass-card music-card">
-                    <div className="widget-icon-header">
-                        <FiMusic className="widget-icon" />
-                        <div className="card-header">{spotifyData.isPlaying ? 'Listening To' : 'Last Played'}</div>
-                    </div>
-                    <div className="music-content">
-                        {spotifyData.albumArt && (
-                            <img
-                                src={spotifyData.albumArt}
-                                alt={`${spotifyData.title} album art`}
-                                className="album-art"
-                            />
-                        )}
-                        <div className="music-info">
-                            <div className="song-title">{spotifyData.title}</div>
-                            <div className="artist-name">{spotifyData.artist}</div>
-                            {spotifyData.songUrl && (
-                                <a href={spotifyData.songUrl} target="_blank" rel="noopener noreferrer" className="spotify-link">
-                                    Open in Spotify →
-                                </a>
-                            )}
-                        </div>
-                    </div>
+                <div className="status-divider" />
+
+                {/* Working On */}
+                <div className="status-segment">
+                    <FiLayers className="status-icon" />
+                    <span className="status-label">Working On</span>
+                    <span className="status-value">iCaptain Userdeck</span>
+                </div>
+
+                <div className="status-divider" />
+
+                {/* Spotify */}
+                <div className="status-segment">
+                    <SiSpotify className="status-icon status-icon-spotify" />
+                    <span className="status-label">{spotifyData.isPlaying ? 'Listening' : 'Last Played'}</span>
+                    <span className="status-value">
+                        {spotifyData.songUrl ? (
+                            <a href={spotifyData.songUrl} target="_blank" rel="noopener noreferrer" className="status-spotify-link">
+                                {spotifyData.title}
+                            </a>
+                        ) : spotifyData.title}
+                    </span>
                 </div>
             </div>
         </div>

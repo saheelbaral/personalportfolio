@@ -12,8 +12,22 @@ const About = () => {
                 <div className="about-headline-wrapper">
                     <span className="about-eyebrow">// Intro</span>
                     <h2 className="about-headline-large">
-                        I’m a versatile <span className="highlight-red">marketer</span> who works with <span className="highlight-red">brands</span> to turn ideas into <span className="highlight-red">real growth.</span> I focus on clear strategies, sharp decisions, and fast execution.
+                        I'm equipped in <span className="headline-accent">3 key areas</span> in marketing:
                     </h2>
+                    <div className="specialization-pills">
+                        <span className="spec-pill spec-pill--blue">
+                            <FaChartLine className="spec-pill-icon" />
+                            Digital Marketing
+                        </span>
+                        <span className="spec-pill spec-pill--purple">
+                            <FaBullseye className="spec-pill-icon" />
+                            Sales Funnel Design
+                        </span>
+                        <span className="spec-pill spec-pill--green">
+                            <FaUsers className="spec-pill-icon" />
+                            CRM Automation
+                        </span>
+                    </div>
                 </div>
 
                 <div className="about-subtext-wrapper">
