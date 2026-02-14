@@ -382,7 +382,8 @@ body.light-theme .weather-compact .status-value {
    ============================================ */
 @media (max-width: 768px) {
     .hero-container {
-        padding: 5rem 20px 1.5rem;
+        padding: 8rem 20px 2.5rem;
+        /* Increased top padding for navbar clearance */
         min-height: 100vh;
         justify-content: center;
     }
@@ -414,7 +415,9 @@ body.light-theme .weather-compact .status-value {
         flex-wrap: wrap;
         gap: 0;
         padding: 0.6rem 1rem;
-        margin-bottom: 1rem;
+        margin-top: 3rem;
+        /* Removed auto-margin to bring closer to content */
+        margin-bottom: 2rem;
         border-radius: 12px;
         width: 100%;
         justify-content: center;
@@ -448,7 +451,8 @@ body.light-theme .weather-compact .status-value {
    ============================================ */
 @media (max-width: 480px) {
     .hero-container {
-        padding: 70px 16px 1rem;
+        padding: 100px 16px 2rem;
+        /* Even more clearance for small mobile */
     }
 
     .hero-headline {

@@ -12,7 +12,7 @@ const About = () => {
                 <div className="about-headline-wrapper">
                     <span className="about-eyebrow">// Intro</span>
                     <h2 className="about-headline-large">
-                        I'm equipped in <span className="headline-accent">3 key areas</span> in marketing:
+                        I specialize in <span className="headline-accent">3 key areas.</span> All of them drive growth.
                     </h2>
                     <div className="specialization-pills">
                         <span className="spec-pill spec-pill--blue">
@@ -32,7 +32,6 @@ const About = () => {
 
                 <div className="about-subtext-wrapper">
                     <p className="about-subtext">
-                        A great digital marketer solves small problems everyday. Along the process, the picture is big, and efforts across various domains lead to brilliant, award winning digital campaigns.
                     </p>
                 </div>
             </div>
